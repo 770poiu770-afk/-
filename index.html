@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ILIYA — Creative Proposal I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#050505; --obsidian:#0b0a09; --midnight:#0d1424; --lapis:#1b3277;
+  --gold:#a9844c; --champagne:#d8c29a; --ivory:#f1eadc; --limestone:#cdbe9f;
+  --mute:rgba(241,234,220,.56); --hair:rgba(216,194,154,.22);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --arabic:'Noto Naskh Arabic',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night);color:var(--ivory);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.7;letter-spacing:.01em;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--champagne);color:var(--night)}
+.eyebrow{font-family:var(--sans);font-size:10.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--champagne);font-weight:400}
+.display{font-family:var(--serif);font-weight:300;letter-spacing:.06em;line-height:1.08}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:16px 30px;border:1px solid rgba(241,234,220,.38);font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--ivory);background:transparent;cursor:pointer;font-family:var(--sans);font-weight:400;transition:border-color .6s, background .6s, color .6s}
+.btn:hover,.btn:focus-visible{border-color:var(--champagne);background:rgba(216,194,154,.06);outline:none}
+.btn.solid{background:var(--ivory);color:var(--night);border-color:var(--ivory)}
+.btn.solid:hover{background:var(--champagne);border-color:var(--champagne)}
+.btn .ln{width:26px;height:1px;background:currentColor;opacity:.6}
+.wrap{max-width:1320px;margin:0 auto;padding:0 6vw}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);border:0}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:26px 4vw;transition:background .8s,padding .8s}
+header.scrolled{background:linear-gradient(180deg,rgba(5,5,5,.88),rgba(5,5,5,0));padding:18px 4vw}
+.brandlock{display:flex;align-items:center;gap:14px}
+.brandlock svg{height:15px;width:auto}
+nav.main{display:flex;gap:34px}
+nav.main a{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);transition:color .5s}
+nav.main a:hover{color:var(--ivory)}
+.hright{display:flex;align-items:center;gap:22px;font-size:10px;letter-spacing:.24em;text-transform:uppercase}
+.lang{color:var(--mute)} .lang b{color:var(--ivory);font-weight:400}
+.lang span{font-family:var(--arabic);letter-spacing:0;font-size:12px}
+.proto-tag{position:fixed;left:4vw;bottom:22px;z-index:40;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);border:1px solid var(--hair);padding:7px 12px;background:rgba(5,5,5,.6);backdrop-filter:blur(6px)}
+@media (max-width:980px){nav.main{display:none}.hright .btn{display:none}}
+
+/* hero stage */
+#stage{position:relative;height:560vh}
+.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(ellipse 60% 55% at 50% 42%,#17120b 0%,#0a0807 45%,#050505 80%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%),linear-gradient(180deg,rgba(5,5,5,.5),transparent 18%,transparent 70%,rgba(5,5,5,.85))}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+.beat{position:absolute;opacity:0;transition:none;pointer-events:none;will-change:opacity,transform}
+.beat.on{pointer-events:auto}
+.b0{left:0;right:0;bottom:7vh;text-align:center;padding:0 6vw}
+.b0 h1{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.7vw,56px);letter-spacing:.08em;line-height:1.08}
+.b0 h1 em{font-style:italic;color:var(--champagne);letter-spacing:.04em}
+.b0 p{margin:16px auto 28px;max-width:520px;color:var(--mute);font-family:var(--serif);font-size:clamp(16px,1.5vw,20px);font-style:italic;letter-spacing:.02em}
+.b0 .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.side{max-width:400px;top:50%;transform:translateY(-50%)}
+.side.l{left:6vw} .side.r{right:6vw}
+.side .num{font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--champagne);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.side .num:after{content:"";width:46px;height:1px;background:var(--gold)}
+.side h2{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.2vw,46px);line-height:1.1;letter-spacing:.04em;margin-bottom:20px}
+.side p{color:var(--mute);font-size:14.5px;max-width:360px}
+.scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--mute)}
+.scrollcue i{width:1px;height:38px;background:linear-gradient(var(--champagne),transparent);animation:cue 2.6s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.progress{position:absolute;right:4vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px}
+.progress span{width:1px;height:26px;background:rgba(241,234,220,.18);position:relative}
+.progress span.on{background:var(--champagne)}
+@media (max-width:760px){
+  .side{left:6vw!important;right:6vw!important;top:auto;bottom:8vh;transform:none;max-width:none;background:linear-gradient(0deg,rgba(5,5,5,.8),transparent);padding-top:40px}
+  .progress{display:none}
+  .b0{bottom:7vh}
+}
+.fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:10vw;color:var(--mute)}
+
+/* sections */
+section.block{padding:150px 0;position:relative}
+.sechead{display:grid;grid-template-columns:1fr 1.2fr;gap:6vw;align-items:end;margin-bottom:90px}
+.sechead h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.2vw,64px);line-height:1.04;letter-spacing:.03em;margin-top:22px}
+.sechead p{color:var(--mute);max-width:520px}
+@media (max-width:860px){.sechead{grid-template-columns:1fr;gap:26px;margin-bottom:60px}section.block{padding:100px 0}}
+
+.notice{border:1px solid var(--hair);padding:34px 40px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start;background:linear-gradient(180deg,rgba(216,194,154,.03),transparent)}
+.notice .mark{width:44px;height:44px;border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);color:var(--champagne);font-size:20px}
+.notice p{color:var(--mute);font-size:14px;max-width:880px}
+.notice strong{color:var(--ivory);font-weight:400}
+
+/* names */
+.names{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.name{padding:38px 26px 34px;border-right:1px solid var(--hair);position:relative;min-height:290px;display:flex;flex-direction:column}
+.name:last-child{border-right:0}
+.name .n{font-family:var(--serif);font-size:12px;letter-spacing:.3em;color:var(--gold)}
+.name h3{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:.22em;margin:26px 0 6px}
+.name .ar{font-family:var(--arabic);color:var(--champagne);font-size:15px;margin-bottom:18px;min-height:24px}
+.name p{font-size:13px;color:var(--mute);line-height:1.65}
+.name .risk{margin-top:auto;padding-top:18px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,234,220,.38)}
+.name.rec{background:linear-gradient(180deg,rgba(169,132,76,.10),rgba(169,132,76,0))}
+.name.rec:before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:var(--champagne)}
+.name.rec .badge{position:absolute;top:36px;right:22px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne)}
+@media (max-width:1100px){.names{grid-template-columns:1fr 1fr}.name{border-bottom:1px solid var(--hair);min-height:0}.name:nth-child(2n){border-right:0}}
+@media (max-width:620px){.names{grid-template-columns:1fr}.name{border-right:0}}
+
+.wordmark-stage{margin-top:120px;padding:120px 6vw;background:radial-gradient(ellipse at 50% 40%,#14100a,#070606 70%);border:1px solid var(--hair);text-align:center;position:relative;overflow:hidden}
+.wordmark-stage .wm{width:min(620px,78vw);height:auto}
+.wordmark-stage .sub{margin-top:34px;font-size:10px;letter-spacing:.62em;text-transform:uppercase;color:var(--champagne)}
+.wordmark-stage .arw{font-family:var(--arabic);font-size:26px;color:var(--ivory);margin-top:18px;opacity:.85}
+.corner{position:absolute;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(241,234,220,.32)}
+.corner.tl{top:22px;left:26px}.corner.br{bottom:22px;right:26px}
+
+.marks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);margin-top:1px;border:1px solid var(--hair)}
+.markcell{background:var(--night);padding:60px 30px 34px;text-align:center}
+.markcell svg{height:150px;width:auto}
+.markcell h4{margin-top:36px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:400;color:var(--champagne)}
+.markcell p{font-size:12.5px;color:var(--mute);margin-top:8px;max-width:300px;margin-inline:auto}
+.markcell.ivory{background:var(--ivory);color:var(--night)} .markcell.ivory p{color:rgba(5,5,5,.6)} .markcell.ivory h4{color:var(--gold)}
+.markcell.blue{background:var(--midnight)}
+@media (max-width:860px){.marks{grid-template-columns:1fr}}
+
+.palette{display:grid;grid-template-columns:repeat(8,1fr);margin-top:110px;border:1px solid var(--hair)}
+.sw{height:250px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.sw b{display:block;font-family:var(--serif);font-weight:400;font-size:18px;letter-spacing:.06em;text-transform:none;margin-bottom:4px}
+.sw small{opacity:.6;font-size:9.5px}
+@media (max-width:980px){.palette{grid-template-columns:repeat(4,1fr)}.sw{height:160px}}
+.ratio{margin-top:18px;display:flex;height:6px}
+.ratio i{display:block;height:100%}
+.ratiolab{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:10px}
+
+.type{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:110px}
+.type>div{background:var(--night);padding:44px 36px}
+.type .big{font-family:var(--serif);font-weight:300;font-size:clamp(56px,7vw,112px);line-height:.95;letter-spacing:.02em}
+.type .big i{color:var(--champagne)}
+.type .spec{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--champagne);margin-bottom:26px}
+.type .ar{font-family:var(--arabic);font-size:clamp(28px,2.6vw,38px);line-height:1.6;direction:rtl;text-align:right}
+@media (max-width:980px){.type{grid-template-columns:1fr}}
+
+/* objects */
+.objects{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:110px}
+.obj{background:radial-gradient(ellipse at 50% 35%,#16110b,#060505 75%);min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 30px;position:relative}
+.obj .lab{position:absolute;left:28px;top:24px;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+/* box */
+.box{width:min(360px,70vw);aspect-ratio:1.18;position:relative;perspective:1200px}
+.box .lid{position:absolute;inset:0;border-radius:4px;background:
+  repeating-linear-gradient(115deg,rgba(255,255,255,.012) 0 2px,transparent 2px 5px),
+  radial-gradient(ellipse at 30% 20%,#1d2a4a,#0c1325 55%,#070b16);box-shadow:0 50px 90px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(216,194,154,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transform:rotateX(18deg);transform-origin:bottom}
+.box .lid:after{content:"";position:absolute;inset:14px;border:1px solid rgba(216,194,154,.25);border-radius:2px}
+.box .lid svg{position:relative;z-index:1}
+.box .edge{position:absolute;left:0;right:0;bottom:-22px;height:22px;background:linear-gradient(#0a0f1d,#04060c);border-radius:0 0 4px 4px;box-shadow:inset 0 1px 0 rgba(216,194,154,.4)}
+/* certificate */
+.cert{width:min(400px,78vw);aspect-ratio:.72;background:linear-gradient(160deg,#f6f0e3,#ece3d0);color:#1a1712;padding:36px 34px;position:relative;box-shadow:0 50px 90px rgba(0,0,0,.6);transform:rotate(-2deg);display:flex;flex-direction:column}
+.cert:before{content:"";position:absolute;inset:12px;border:1px solid rgba(169,132,76,.55)}
+.cert:after{content:"";position:absolute;inset:16px;border:1px solid rgba(169,132,76,.22)}
+.cert>*{position:relative;z-index:1}
+.cert .top{display:flex;justify-content:center;margin:8px 0 18px}
+.cert h5{font-family:var(--serif);font-weight:400;font-size:21px;letter-spacing:.14em;text-align:center;text-transform:uppercase}
+.cert .ar{font-family:var(--arabic);text-align:center;font-size:13px;color:#6b5a3e;margin:4px 0 16px}
+.cert dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:10px;letter-spacing:.06em;margin-top:6px}
+.cert dt{text-transform:uppercase;letter-spacing:.2em;color:#8a7552;font-size:8.5px;padding-top:2px}
+.cert dd{font-family:var(--serif);font-size:13.5px;border-bottom:1px solid rgba(169,132,76,.25);padding-bottom:4px}
+.cert .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7552}
+.cert .seal{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9b878,#a07a3c 60%,#7a5a2a);display:grid;place-items:center;box-shadow:inset 0 0 0 3px rgba(255,255,255,.18)}
+.cert .specimen{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;font-family:var(--serif);font-size:54px;letter-spacing:.3em;color:rgba(169,132,76,.13);transform:rotate(-30deg);z-index:2}
+@media (max-width:860px){.objects{grid-template-columns:1fr}}
+
+/* studio */
+#studio{background:linear-gradient(180deg,var(--night),#07080c 30%,var(--night))}
+.viewer{position:relative;height:min(86vh,860px);min-height:560px;border:1px solid var(--hair);background:radial-gradient(ellipse 70% 60% at 50% 45%,#161109,#070606 70%,#040404);overflow:hidden}
+#studioCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+#studioCanvas:active{cursor:grabbing}
+.vtop{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:24px 26px;pointer-events:none;gap:20px}
+.vtop>*{pointer-events:auto}
+.seg{display:flex;border:1px solid var(--hair);background:rgba(5,5,5,.55);backdrop-filter:blur(8px)}
+.seg button{background:none;border:0;color:var(--mute);font-family:var(--sans);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;padding:13px 18px;cursor:pointer;transition:color .4s,background .4s}
+.seg button[aria-pressed=true]{color:var(--night);background:var(--ivory)}
+.seg button:hover:not([aria-pressed=true]){color:var(--ivory)}
+.vinfo{position:absolute;left:26px;bottom:26px;max-width:340px;pointer-events:none}
+.vinfo h3{font-family:var(--serif);font-weight:300;font-size:32px;letter-spacing:.05em;line-height:1.1}
+.vinfo .dims{margin-top:14px;display:flex;gap:26px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.vinfo .dims b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.04em;color:var(--ivory);text-transform:none}
+.vinfo .flag{margin-top:14px;font-size:11px;color:var(--champagne);line-height:1.55}
+.details{position:absolute;right:26px;bottom:26px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.details button{background:rgba(5,5,5,.5);backdrop-filter:blur(8px);border:1px solid var(--hair);color:var(--mute);font-family:var(--sans);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;padding:10px 16px;cursor:pointer;min-width:150px;text-align:right;transition:all .4s}
+.details button:hover,.details button.on{color:var(--ivory);border-color:var(--champagne)}
+.hint{position:absolute;left:50%;top:84px;transform:translateX(-50%);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(241,234,220,.4);transition:opacity 1s;pointer-events:none;white-space:nowrap}
+.cmp-labels{position:absolute;inset:0;pointer-events:none}
+.cmp-labels div{position:absolute;transform:translate(-50%,0);text-align:center;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);white-space:nowrap;opacity:0;transition:opacity .6s}
+.cmp-labels b{display:block;font-family:var(--serif);font-weight:400;font-size:17px;color:var(--ivory);letter-spacing:.04em;text-transform:none}
+@media (max-width:760px){
+  .proto-tag{display:none}
+  .vinfo .dims{gap:16px}.vinfo .dims b{font-size:16px;white-space:nowrap}
+  .vtop{flex-direction:column;padding:16px}
+  .seg button{padding:11px 12px;font-size:8.5px;letter-spacing:.18em}
+  .vinfo{left:16px;right:16px;bottom:auto;top:120px;max-width:none}
+  .vinfo h3{font-size:24px}.vinfo .flag{display:none}
+  .details{right:16px;left:16px;bottom:16px;flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .details button{min-width:0;padding:9px 11px;font-size:8.5px}
+  .hint{display:none}
+}
+
+/* direction */
+.seq{border-top:1px solid var(--hair)}
+.row{display:grid;grid-template-columns:90px 1.1fr 1.4fr 1fr;gap:30px;padding:34px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.row .rn{font-family:var(--serif);font-size:15px;letter-spacing:.2em;color:var(--gold)}
+.row h4{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:.04em;line-height:1.15}
+.row h4 small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne);margin-top:8px}
+.row p{font-size:13.5px;color:var(--mute)}
+.row .mo{font-size:11.5px;color:rgba(241,234,220,.42);font-style:normal;border-left:1px solid var(--hair);padding-left:18px}
+@media (max-width:900px){.row{grid-template-columns:60px 1fr}.row p,.row .mo{grid-column:2}}
+
+.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:100px}
+.principles div{background:var(--night);padding:40px 30px}
+.principles b{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:.03em;display:block;margin-bottom:14px}
+.principles p{font-size:13px;color:var(--mute)}
+@media (max-width:980px){.principles{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.principles{grid-template-columns:1fr}}
+
+.story{margin-top:120px;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.story blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(30px,3.4vw,52px);line-height:1.18;letter-spacing:.01em}
+.story blockquote em{color:var(--champagne)}
+.chapters{display:flex;flex-direction:column}
+.chapters div{display:grid;grid-template-columns:58px 1fr;padding:20px 0;border-bottom:1px solid var(--hair)}
+.chapters span{font-family:var(--serif);color:var(--gold);letter-spacing:.2em}
+.chapters b{font-family:var(--serif);font-weight:400;font-size:19px;letter-spacing:.14em;text-transform:uppercase;display:block}
+.chapters p{font-size:13px;color:var(--mute);margin-top:4px}
+@media (max-width:900px){.story{grid-template-columns:1fr}}
+
+/* acquisition */
+.acq{display:grid;grid-template-columns:1fr 1.1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:120px}
+.acq>div{background:var(--obsidian);padding:60px 50px}
+.acq h3{font-family:var(--serif);font-weight:300;font-size:38px;letter-spacing:.04em;line-height:1.1;margin:22px 0 18px}
+.acq p{color:var(--mute);font-size:14px}
+.steps{margin-top:40px;display:flex;flex-direction:column;gap:18px}
+.steps div{display:grid;grid-template-columns:44px 1fr;font-size:13px;color:var(--mute)}
+.steps span{font-family:var(--serif);color:var(--champagne)}
+form.enq{display:grid;grid-template-columns:1fr 1fr;gap:30px 26px}
+.f{display:flex;flex-direction:column;gap:10px}
+.f.full{grid-column:1/-1}
+.f label{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne)}
+.f input,.f select,.f textarea{background:transparent;border:0;border-bottom:1px solid rgba(241,234,220,.24);color:var(--ivory);font-family:var(--serif);font-size:19px;padding:8px 0 10px;outline:none;border-radius:0;transition:border-color .5s;-webkit-appearance:none;appearance:none}
+.f select option{background:var(--obsidian)}
+.f textarea{resize:vertical;min-height:70px;font-size:17px}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--champagne)}
+.chk{grid-column:1/-1;display:flex;gap:14px;align-items:flex-start;font-size:12.5px;color:var(--mute)}
+.chk input{margin-top:5px;accent-color:#a9844c}
+.formnote{grid-column:1/-1;font-size:11.5px;color:var(--champagne);min-height:18px}
+@media (max-width:900px){.acq{grid-template-columns:1fr}.acq>div{padding:44px 26px}form.enq{grid-template-columns:1fr}}
+
+/* decisions */
+.dec{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.dec div{background:var(--night);padding:34px 34px 30px}
+.dec .k{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne)}
+.dec h4{font-family:var(--serif);font-weight:400;font-size:23px;margin:12px 0 10px;letter-spacing:.02em}
+.dec p{font-size:13px;color:var(--mute)}
+@media (max-width:860px){.dec{grid-template-columns:1fr}}
+
+footer{padding:110px 0 120px;text-align:center;border-top:1px solid var(--hair)}
+footer .q{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.4vw,32px);color:var(--ivory);max-width:760px;margin:40px auto 0;line-height:1.35}
+footer small{display:block;margin-top:40px;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(241,234,220,.32)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1.4s cubic-bezier(.2,.7,.1,1),transform 1.4s cubic-bezier(.2,.7,.1,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.grain{animation:none}.scrollcue i{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- SVG symbol library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ead2a0"/><stop offset=".45" stop-color="#c49a58"/><stop offset=".7" stop-color="#e6c88f"/><stop offset="1" stop-color="#9c7640"/>
+    </linearGradient>
+    <!-- custom high-contrast wordmark, drawn by hand: I L I Y A -->
+    <symbol id="wordmark" viewBox="-12 -6 474 112">
+      <g>
+        <!-- I -->
+        <path d="M8 4h14v92H8z"/><path d="M-1 0h32v3H-1zM-1 97h32v3H-1z"/>
+        <!-- L -->
+        <path d="M78 4h14v92H78z"/><path d="M69 0h32v3H69z"/><path d="M69 97h64v3H69z"/><path d="M130 76h3v24h-3z"/>
+        <!-- I -->
+        <path d="M180 4h14v92h-14z"/><path d="M171 0h32v3h-32zM171 97h32v3h-32z"/>
+        <!-- Y -->
+        <path d="M244 3h16l30 49h-14z"/><path d="M314 3h3l-29 49h-3z"/><path d="M276 50h14v46h-14z"/>
+        <path d="M236 0h32v3h-32zM302 0h24v3h-24zM267 97h32v3h-32z"/>
+        <!-- A -->
+        <path d="M395 0h4l-36 97h-3z"/><path d="M393 0h8l39 97h-15z"/><path d="M375 64h50v3h-50z"/>
+        <path d="M350 97h24v3h-24zM416 97h34v3h-34z"/>
+      </g>
+    </symbol>
+    <!-- monogram: an arch over a single column — the I of ILIYA as architecture -->
+    <symbol id="monogram" viewBox="0 0 100 160">
+      <path d="M8 156V58a42 42 0 0 1 84 0v98" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M15 156V60a35 35 0 0 1 70 0v96" fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"/>
+      <path d="M43 52h14v96H43z" fill="currentColor"/>
+      <path d="M35 48h30v3H35zM35 148h30v3H35z" fill="currentColor"/>
+      <path d="M50 22l3 3-3 3-3-3z" fill="currentColor"/>
+      <path d="M2 156h96" stroke="currentColor" stroke-width="1.2"/>
+    </symbol>
+    <!-- emblem: two squares form the octagonal plan; a dome rises within -->
+    <symbol id="emblem" viewBox="-60 -60 120 120">
+      <circle r="56" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <circle r="52.5" fill="none" stroke="currentColor" stroke-width=".4" opacity=".6"/>
+      <rect x="-34" y="-34" width="68" height="68" fill="none" stroke="currentColor" stroke-width=".9"/>
+      <rect x="-34" y="-34" width="68" height="68" fill="none" stroke="currentColor" stroke-width=".9" transform="rotate(45)"/>
+      <path d="M-17 12h34" stroke="currentColor" stroke-width="1"/>
+      <path d="M-14 12V4h28v8" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <path d="M-11 4a11 13 0 0 1 22 0" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M0 -9.5v-4" stroke="currentColor" stroke-width=".9"/>
+      <path d="M-14 17h28M-11 21h22M-7 25h14" stroke="currentColor" stroke-width=".45" opacity=".75"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header id="hdr">
+  <a class="brandlock" href="#top" aria-label="ILIYA home">
+    <svg viewBox="-12 -6 474 112" fill="#f1eadc" style="height:14px"><use href="#wordmark"/></svg>
+  </a>
+  <nav class="main" aria-label="Primary">
+    <a href="#studio">The Creations</a><a href="#story">The Story</a><a href="#identity">The House</a><a href="#acquisition">Acquisition</a>
+  </nav>
+  <div class="hright">
+    <span class="lang"><b>EN</b> &nbsp;/&nbsp; <span lang="ar">العربية</span></span>
+    <a class="btn" href="#acquisition" style="padding:11px 18px">Private Acquisition</a>
+  </div>
+</header>
+<div class="proto-tag">Creative Proposal I · Visual prototype</div>
+
+<main id="top">
+<!-- ============ HERO / SCROLL STAGE ============ -->
+<section id="stage" aria-label="The creation">
+  <div class="sticky">
+    <canvas id="heroCanvas" aria-label="Three-dimensional visual prototype of the creation"></canvas>
+    <div class="fallback" id="heroFallback">Your device cannot display the three-dimensional presentation. The creation is shown in photography in the final site.</div>
+    <div class="vignette"></div><div class="grain"></div>
+
+    <div class="beat b0" data-beat="0">
+      <div class="eyebrow" style="margin-bottom:26px">The Jerusalem Creation</div>
+      <h1>An Icon of Heritage.<br><em>Immortalized in Gold.</em></h1>
+      <p>An extraordinary architectural creation. Conceived as a timeless collectible.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#studio">Discover the Collection</a>
+        <a class="btn" href="#acquisition"><span class="ln"></span>Private Acquisition</a>
+      </div>
+    </div>
+    <div class="beat side r" data-beat="1">
+      <div class="num">II</div>
+      <h2>The Form</h2>
+      <p>Not a medallion, not a relief. A complete building in miniature — eight faces, its arcades and columns continuing around the rear exactly as they appear at the front.</p>
+    </div>
+    <div class="beat side l" data-beat="2">
+      <div class="num">III</div>
+      <h2>The Crown</h2>
+      <p>A gold dome traced by meridians and rings, rising from a drum banded in deep blue enamel. Every surface is finished, because every surface will be seen.</p>
+    </div>
+    <div class="beat side r" data-beat="3">
+      <div class="num">IV</div>
+      <h2>The Memory</h2>
+      <p>Beneath the architecture, a transparent chamber holds sand — a quiet, symbolic reference to place and origin. Its provenance is documented for each creation.</p>
+    </div>
+    <div class="beat side l" data-beat="4">
+      <div class="num">V</div>
+      <h2>Made to be<br>Remembered.</h2>
+      <p>Some places are too meaningful to be forgotten. Some creations are made to be remembered.</p>
+      <div style="margin-top:30px"><a class="btn" href="#studio"><span class="ln"></span>Inspect in 360°</a></div>
+    </div>
+
+    <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="scrollcue" id="cue"><i></i>Scroll</div>
+  </div>
+</section>
+
+<!-- ============ PROTOTYPE NOTICE ============ -->
+<section class="block" style="padding-top:110px;padding-bottom:0">
+  <div class="wrap">
+    <div class="notice reveal">
+      <div class="mark">i</div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:12px">About this prototype</div>
+        <p><strong>The 3D object on this page is a procedural visual prototype</strong>, modelled by hand in code from the supplied reference boards so that the owner can approve proportions, materials and presentation. It is <strong>not an engineering model</strong> and not a substitute for CAD. Arch counts, ornament and gem settings are approximations awaiting approval. Both sizes use one identical geometry; the Grand Collector Edition is the same object, uniformly scaled. Dimensions, gold weight and gemstones shown are preliminary targets, not certified specifications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STUDIO — BOTH SIZES ============ -->
+<section class="block" id="studio">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div><div class="eyebrow">Phase 3 – 5 · The creations</div><h2>Two sizes.<br>One architecture.</h2></div>
+      <p>The Pendant and the Grand Collector Edition share a single geometry — the same dome, drum, arcades, columns, enamel and sand chamber. Only scale and presentation change. Drag to rotate, pinch or scroll to approach, or choose a detail.</p>
+    </div>
+  </div>
+  <div class="wrap" style="max-width:1560px">
+    <div class="viewer reveal" id="viewer">
+      <canvas id="studioCanvas" aria-label="Interactive 360 degree viewer"></canvas>
+      <div class="cmp-labels" id="cmpLabels">
+        <div id="labP"><b>45 × 47.16 mm</b>The Pendant</div>
+        <div id="labG"><b>114 × 120 mm</b>Grand Collector · per reference board</div>
+      </div>
+      <div class="vtop">
+        <div class="seg" role="group" aria-label="Creation">
+          <button data-mode="pendant" aria-pressed="true">The Pendant</button>
+          <button data-mode="grand" aria-pressed="false">Grand Collector</button>
+          <button data-mode="compare" aria-pressed="false">Side by side</button>
+        </div>
+        <div class="seg" role="group" aria-label="Light">
+          <button data-light="gallery" aria-pressed="true">Gallery</button>
+          <button data-light="dusk" aria-pressed="false">Dusk</button>
+        </div>
+      </div>
+      <div class="hint" id="hint">Drag to rotate · Scroll to approach</div>
+      <div class="vinfo" id="vinfo"></div>
+      <div class="details" id="details"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY / ART DIRECTION ============ -->
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div><div class="eyebrow">Phase 6 · Homepage art direction</div><h2>A private exhibition,<br>in seven rooms.</h2></div>
+      <p>The homepage is not a catalogue. It is a sequence the visitor walks through — each scroll a room, each room lit for one idea. The hero above is room one, built as it will ship.</p>
+    </div>
+
+    <div class="seq reveal">
+      <div class="row"><span class="rn">01</span><h4>The Reveal<small>Hero · scroll stage</small></h4><p>Darkness. A single warm light finds the dome first, then the arcade, then the whole object. Headline arrives only after the object has been seen.</p><span class="mo">Camera on rails, driven by scroll. One slow rotation across the whole stage — never more.</span></div>
+      <div class="row"><span class="rn">02</span><h4>I — The City<small>Inspiration</small></h4><p>Jerusalem's light on limestone, at dawn. Architectural photography only — no crowds, no symbols beyond the architecture. Copy distinguishes inspiration from history.</p><span class="mo">Full-bleed stills, slow horizontal parallax. Text set in limestone on black.</span></div>
+      <div class="row"><span class="rn">03</span><h4>II — The Form<small>From building to object</small></h4><p>Line drawing of the octagonal plan resolves into the 3D creation. The visitor sees why 360° matters: the rear is as complete as the front.</p><span class="mo">SVG plan draws itself, crossfades into WebGL at the same angle.</span></div>
+      <div class="row"><span class="rn">04</span><h4>III — The Material<small>Craftsmanship</small></h4><p>Macro photography of gold, enamel, diamonds, chain and bail. Each image carries a factual caption — only verified specifications, marked as such.</p><span class="mo">Images open from a hairline, like a vitrine lid lifting.</span></div>
+      <div class="row"><span class="rn">05</span><h4>IV — The Memory<small>The sand chamber</small></h4><p>The emotional centre. Sand drifting in a single beam. The chamber's meaning is told as symbol; the sand's origin appears only as documented provenance.</p><span class="mo">Particle sand, the only moving element in the room.</span></div>
+      <div class="row"><span class="rn">06</span><h4>The Process<small>Creation & authentication</small></h4><p>The eleven stages from acquisition to delivery, with the up-to-80-day estimate clearly framed as an estimate. Certificate and presentation book shown.</p><span class="mo">A single gold line advances through the stages as the visitor scrolls.</span></div>
+      <div class="row"><span class="rn">07</span><h4>V — The Legacy<small>Private acquisition</small></h4><p>"Made to be remembered." The object returns to the full hero composition. One invitation: request private acquisition or arrange a private viewing.</p><span class="mo">The light from room one returns. The page ends quietly.</span></div>
+    </div>
+
+    <div class="principles reveal">
+      <div><b>Darkness is a material.</b><p>Black is never empty: it is warm obsidian with grain and depth, so the gold has something to emerge from.</p></div>
+      <div><b>Gold is light, not paint.</b><p>Gold appears as reflection, hairline and emblem. Buttons are ivory hairlines; a gold-filled button would cheapen everything around it.</p></div>
+      <div><b>One object per screen.</b><p>No grids of products, no badges, no countdowns. The creation always has the room to itself.</p></div>
+      <div><b>Every claim is evidenced.</b><p>No invented provenance, clients, valuations or scarcity. Restraint is what makes the remaining statements credible.</p></div>
+    </div>
+
+    <div class="story reveal">
+      <blockquote>“Some places are too meaningful to be forgotten. <em>Some creations are made to be remembered.</em>”</blockquote>
+      <div class="chapters">
+        <div><span>I</span><div><b>The City</b><p>Jerusalem as a source of inspiration, memory and architecture.</p></div></div>
+        <div><span>II</span><div><b>The Form</b><p>How a building becomes a complete three-dimensional creation.</p></div></div>
+        <div><span>III</span><div><b>The Material</b><p>18K gold, enamel and diamonds — and the hands that join them.</p></div></div>
+        <div><span>IV</span><div><b>The Memory</b><p>The transparent chamber and its sand: place, origin, remembrance.</p></div></div>
+        <div><span>V</span><div><b>The Legacy</b><p>Not simply something you wear. Something you preserve.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND IDENTITY ============ -->
+<section class="block" id="identity" style="background:linear-gradient(180deg,var(--night),#080706 50%,var(--night))">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div><div class="eyebrow">Phase 2 · The house</div><h2>Five names.<br>One recommendation.</h2></div>
+      <p>Each name was chosen to be short, ownable, pronounceable in English and Arabic, and free of borrowed luxury codes. All five require trademark clearance in the UAE, EU, US and Israel before adoption — none has been searched yet.</p>
+    </div>
+
+    <div class="names reveal">
+      <div class="name rec"><span class="badge">Recommended</span><span class="n">01</span><h3>ILIYA</h3><div class="ar" lang="ar">إيلياء</div><p>From Iliyā’, a historic name for Jerusalem in early Arabic sources, itself derived from the Latin Aelia. Rooted in the city, recognisable to Gulf clients, effortless in English.</p><span class="risk">Meaning ● ● ● · Ownability ● ● ○</span></div>
+      <div class="name"><span class="n">02</span><h3>CUSTOS</h3><div class="ar" lang="ar">كوستوس</div><p>Latin for "custodian" — the owner as keeper of a meaningful creation. Strong philosophy, but cooler and more European in tone.</p><span class="risk">Meaning ● ● ○ · Ownability ● ● ●</span></div>
+      <div class="name"><span class="n">03</span><h3>ATHAR</h3><div class="ar" lang="ar">أثر</div><p>Arabic for "trace", "relic", "what remains". Beautiful meaning, but a common word — harder to protect and to search.</p><span class="risk">Meaning ● ● ● · Ownability ● ○ ○</span></div>
+      <div class="name"><span class="n">04</span><h3>MNÉMÉ</h3><div class="ar" lang="ar">منيمي</div><p>Greek for "memory". Elegant on paper; pronunciation is uncertain for many clients, which weakens recall.</p><span class="risk">Meaning ● ● ○ · Ownability ● ● ○</span></div>
+      <div class="name"><span class="n">05</span><h3>OCTAVE</h3><div class="ar" lang="ar">أوكتاف</div><p>After the octagonal plan at the heart of the design. Architectural and calm, but a generic word with crowded registrations.</p><span class="risk">Meaning ● ○ ○ · Ownability ● ○ ○</span></div>
+    </div>
+
+    <div class="wordmark-stage reveal">
+      <span class="corner tl">Wordmark · drawn, not typed</span>
+      <svg class="wm" viewBox="-12 -6 474 112" fill="url(#gGold)" role="img" aria-label="ILIYA"><use href="#wordmark"/></svg>
+      <div class="sub">Maison de Création · Jerusalem Inspired</div>
+      <div class="arw" lang="ar">إيلياء</div>
+      <span class="corner br">Hairline serifs · Didone contrast 14:3</span>
+    </div>
+
+    <div class="marks reveal">
+      <div class="markcell"><svg viewBox="0 0 100 160" style="color:#d8c29a"><use href="#monogram"/></svg><h4>Monogram</h4><p>The I of ILIYA drawn as a column beneath an arch — letter and architecture as one sign. For clasps, seals and the bail.</p></div>
+      <div class="markcell blue"><svg viewBox="-60 -60 120 120" style="color:#d8c29a"><use href="#emblem"/></svg><h4>Emblem</h4><p>Two squares form the octagonal plan; a dome rises inside; three lines of sand below. For packaging, certificates and the plinth.</p></div>
+      <div class="markcell ivory"><svg viewBox="-60 -60 120 120" style="color:#a9844c"><use href="#emblem"/></svg><h4>On ivory</h4><p>Blind-debossed on the presentation book and certificate, foiled in antique gold only at small sizes.</p></div>
+    </div>
+
+    <div class="palette reveal">
+      <div class="sw" style="background:#050505;color:#f1eadc"><b>Night</b>#050505<small>Ground</small></div>
+      <div class="sw" style="background:#0b0a09;color:#f1eadc"><b>Obsidian</b>#0B0A09<small>Surfaces</small></div>
+      <div class="sw" style="background:#0d1424;color:#f1eadc"><b>Midnight</b>#0D1424<small>Packaging</small></div>
+      <div class="sw" style="background:#1b3277;color:#f1eadc"><b>Lapis</b>#1B3277<small>Enamel only</small></div>
+      <div class="sw" style="background:#a9844c;color:#050505"><b>Antique Gold</b>#A9844C<small>Hairlines</small></div>
+      <div class="sw" style="background:#d8c29a;color:#050505"><b>Champagne</b>#D8C29A<small>Accents</small></div>
+      <div class="sw" style="background:#cdbe9f;color:#050505"><b>Limestone</b>#CDBE9F<small>Story</small></div>
+      <div class="sw" style="background:#f1eadc;color:#050505"><b>Ivory</b>#F1EADC<small>Text · paper</small></div>
+    </div>
+    <div class="ratio reveal" aria-hidden="true"><i style="flex:62;background:#050505;border:1px solid var(--hair)"></i><i style="flex:18;background:#0b0a09"></i><i style="flex:8;background:#f1eadc"></i><i style="flex:6;background:#0d1424"></i><i style="flex:4;background:#d8c29a"></i><i style="flex:2;background:#a9844c"></i></div>
+    <div class="ratiolab reveal"><span>Proportion of use · darkness 80%</span><span>Gold ≤ 6%</span></div>
+
+    <div class="type reveal">
+      <div><div class="spec">Display · Cormorant Garamond Light</div><div class="big">Heritage<br><i>in gold.</i></div></div>
+      <div><div class="spec">Text · Manrope Light</div><p style="font-size:15px;color:var(--mute)">Set small, tracked wide for labels, and generous in leading for reading. A quiet, modern counterpoint to the serif — the voice of the concierge, not the poet.</p><p style="margin-top:22px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--champagne)">Arrange a private viewing</p></div>
+      <div><div class="spec" style="text-align:right">Arabic · Noto Naskh Arabic</div><div class="ar" lang="ar">أيقونةٌ من الإرث.<br>خالدةٌ بالذهب.</div></div>
+    </div>
+
+    <div class="objects reveal">
+      <div class="obj"><span class="lab">Presentation case · midnight leather, emblem in blind</span>
+        <div class="box"><div class="lid">
+          <svg viewBox="-60 -60 120 120" style="height:74px;color:#c9ab74"><use href="#emblem"/></svg>
+          <svg viewBox="-12 -6 474 112" fill="#c9ab74" style="height:13px"><use href="#wordmark"/></svg>
+        </div><div class="edge"></div></div>
+      </div>
+      <div class="obj"><span class="lab">Certificate of authenticity · specimen</span>
+        <div class="cert">
+          <div class="specimen">SPECIMEN</div>
+          <div class="top"><svg viewBox="-60 -60 120 120" style="height:46px;color:#a9844c"><use href="#emblem"/></svg></div>
+          <h5>Certificate of Authenticity</h5>
+          <div class="ar" lang="ar">شهادة أصالة</div>
+          <dl>
+            <dt>Creation</dt><dd>The Pendant</dd>
+            <dt>Reference</dt><dd>ILY · P · — assigned at acquisition</dd>
+            <dt>Gold</dt><dd>18K · weight certified on completion</dd>
+            <dt>Gemstones</dt><dd>Per laboratory report</dd>
+            <dt>Sand</dt><dd>Provenance per attached record</dd>
+            <dt>Custodian</dt><dd>—</dd>
+          </dl>
+          <div class="foot"><span>Atelier signature<br>—</span><span class="seal"><svg viewBox="0 0 100 160" style="height:30px;color:#f6edd8"><use href="#monogram"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACQUISITION ============ -->
+<section class="block" id="acquisition">
+  <div class="wrap">
+    <div class="acq reveal">
+      <div>
+        <div class="eyebrow">Phase 9 · Private acquisition</div>
+        <h3>An introduction,<br>not a checkout.</h3>
+        <p>There is no cart. The visitor requests access; a private concierge responds personally. Payment happens later, by verified institutional transfer under a signed acquisition agreement.</p>
+        <div class="steps">
+          <div><span>01</span>Confidential enquiry — encrypted at rest, never shown publicly.</div>
+          <div><span>02</span>Personal response from the concierge; identity verification.</div>
+          <div><span>03</span>Private viewing — in person or by secure video.</div>
+          <div><span>04</span>Acquisition agreement and verified bank transfer.</div>
+          <div><span>05</span>Private client portal: the creation's journal, up to an estimated 80 days.</div>
+        </div>
+      </div>
+      <div>
+        <form class="enq" id="enq" novalidate>
+          <div class="f"><label for="fn">Name</label><input id="fn" autocomplete="name"></div>
+          <div class="f"><label for="fc">Country of residence</label><input id="fc" autocomplete="country-name"></div>
+          <div class="f"><label for="fm">Preferred contact</label><select id="fm"><option>Email</option><option>Telephone</option><option>WhatsApp</option><option>Through a representative</option></select></div>
+          <div class="f"><label for="fi">Creation of interest</label><select id="fi"><option>The Pendant</option><option>The Grand Collector Edition</option><option>Both</option></select></div>
+          <div class="f full"><label for="fx">Your message — optional</label><textarea id="fx" rows="2"></textarea></div>
+          <label class="chk"><input type="checkbox" checked> Treat my enquiry with full confidentiality. My details are used only to respond to this request.</label>
+          <div style="grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap">
+            <button class="btn solid" type="submit">Request Private Acquisition</button>
+            <button class="btn" type="button" id="viewingBtn"><span class="ln"></span>Arrange a Private Viewing</button>
+          </div>
+          <div class="formnote" id="formnote" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROVALS ============ -->
+<section class="block" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div><div class="eyebrow">For owner approval</div><h2>Before we build further.</h2></div>
+      <p>These decisions change the product itself, so they are the owner's to make. Nothing below has been assumed in the final implementation.</p>
+    </div>
+    <div class="dec reveal">
+      <div><span class="k">Product · master reference</span><h4>A true photograph or CAD file</h4><p>Both reference boards appear to be composite renders. The prototype follows the first board, top-left image. A real photograph, CAD/STEP file or physical sample is needed to make the model exact.</p></div>
+      <div><span class="k">Product · Grand Collector size</span><h4>114 × 120 mm, or "two 1.5-litre bottles"?</h4><p>The board shows 114 × 120 mm (≈ 2.5× the pendant). Two 1.5 L bottles side by side is closer to 180 × 300 mm (≈ 6×). The viewer currently uses the board's figure.</p></div>
+      <div><span class="k">Product · geometry</span><h4>Arches, doors and finial</h4><p>The prototype uses five arches per face, a door on four faces, a plain gold finial on the dome, and a diamond bail on the pendant only. Please confirm or correct each.</p></div>
+      <div><span class="k">Brand · name</span><h4>ILIYA, subject to clearance</h4><p>Recommended name, pending a trademark search. Also decide how explicitly the building is named in copy; the current draft speaks of Jerusalem's architecture without naming a site.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg viewBox="-60 -60 120 120" style="height:56px;color:#a9844c"><use href="#emblem"/></svg>
+  <p class="q">This is not simply something you wear.<br>It is something you preserve.</p>
+  <small>ILIYA · Creative Proposal I · Visual prototype for owner review · Not for publication</small>
+</footer>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MOBILE = matchMedia('(max-width: 760px)').matches;
+const TAU = Math.PI*2;
+
+/* ---------------------------------------------------------------
+   Procedural textures (canvas) — sand, enamel with gold inlay, marble
+---------------------------------------------------------------- */
+function rng(seed){ let s=seed>>>0; return ()=>{ s=(s*1664525+1013904223)>>>0; return s/4294967296; }; }
+function canvasTex(w,h,draw,color=true){
+  const c=document.createElement('canvas'); c.width=w; c.height=h;
+  draw(c.getContext('2d'),w,h);
+  const t=new THREE.CanvasTexture(c); if(color) t.colorSpace=THREE.SRGBColorSpace;
+  t.anisotropy=8; return t;
+}
+function sandDraw(ctx,w,h){
+  const r=rng(7); ctx.fillStyle='#a8824e'; ctx.fillRect(0,0,w,h);
+  const tones=['#6e512c','#8f6c3f','#b48c55','#cfa96f','#e2c48e','#f4e2bb','#5a4126'];
+  for(let i=0;i<w*h*0.05;i++){
+    const x=r()*w, y=r()*h, rad=.8+r()*r()*3.2;
+    ctx.fillStyle=tones[Math.floor(r()*tones.length)]; ctx.globalAlpha=.6+r()*.4;
+    ctx.beginPath(); ctx.ellipse(x,y,rad,rad*(.6+r()*.4),r()*3,0,TAU); ctx.fill();
+  }
+  ctx.globalAlpha=1;
+}
+function bandDraw(arches, gold){ // enamel band with inlaid gold — color or metalness mask
+  return (ctx,w,h)=>{
+    if(gold){ ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h); }
+    else{
+      const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'#0c1f5c'); g.addColorStop(.5,'#1b3a92'); g.addColorStop(1,'#0c1f5c');
+      ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+      const r=rng(3); for(let i=0;i<1400;i++){ctx.fillStyle=`rgba(${r()<.5?'90,130,230':'5,15,50'},${r()*.18})`;ctx.fillRect(r()*w,r()*h,2,2);}
+    }
+    const G = gold?'#fff':'#e5bd6c';
+    ctx.strokeStyle=G; ctx.fillStyle=G;
+    ctx.lineWidth=h*0.045; ctx.strokeRect(0,ctx.lineWidth/2,w,h-ctx.lineWidth);
+    const n=arches, bay=w/n;
+    for(let k=0;k<n;k++){
+      const cx=bay*(k+.5), aw=bay*.56, top=h*.2, base=h*.86, rr=aw/2;
+      ctx.lineWidth=h*0.035;
+      ctx.beginPath(); ctx.moveTo(cx-rr,base); ctx.lineTo(cx-rr,top+rr); ctx.arc(cx,top+rr,rr,Math.PI,0); ctx.lineTo(cx+rr,base); ctx.stroke();
+      // eight-point star inside
+      const sy=top+rr+ (base-top-rr)*.35, s=aw*.18;
+      ctx.beginPath(); for(let j=0;j<16;j++){ const a=j*Math.PI/8, rad=j%2?s*.45:s; ctx.lineTo(cx+Math.sin(a)*rad, sy-Math.cos(a)*rad);} ctx.closePath(); ctx.fill();
+      // lozenge between arches
+      const lx=bay*(k+1), ly=h*.52, ls=h*.09;
+      if(k<n-1){ ctx.beginPath(); ctx.moveTo(lx,ly-ls); ctx.lineTo(lx+ls*.6,ly); ctx.lineTo(lx,ly+ls); ctx.lineTo(lx-ls*.6,ly); ctx.closePath(); ctx.fill(); }
+    }
+  };
+}
+function drumDraw(gold){
+  return (ctx,w,h)=>{
+    if(gold){ ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);} else {
+      const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'#0b1d58'); g.addColorStop(.5,'#1a3890'); g.addColorStop(1,'#0b1d58'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+    }
+    const G=gold?'#fff':'#e5bd6c'; ctx.fillStyle=G; ctx.strokeStyle=G;
+    ctx.lineWidth=h*.05; ctx.strokeRect(0,ctx.lineWidth/2,w,h-ctx.lineWidth);
+    const n=32; // lozenge chain, windows sit on even slots
+    for(let k=0;k<n;k++){ if(k%2===0) continue; const x=(k+.5)*w/n, y=h*.5, s=h*.16;
+      ctx.beginPath(); ctx.moveTo(x,y-s); ctx.lineTo(x+s*.55,y); ctx.lineTo(x,y+s); ctx.lineTo(x-s*.55,y); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.arc(x,y-s*1.6,h*.025,0,TAU); ctx.arc(x,y+s*1.6,h*.025,0,TAU); ctx.fill(); }
+  };
+}
+function marbleDraw(ctx,w,h){
+  ctx.fillStyle='#0a0a0b'; ctx.fillRect(0,0,w,h);
+  const r=rng(11);
+  for(let v=0;v<26;v++){
+    let x=r()*w, y=r()*h, a=r()*TAU; ctx.beginPath(); ctx.moveTo(x,y);
+    const len=200+r()*700;
+    for(let i=0;i<len;i+=6){ a+= (r()-.5)*.35; x+=Math.cos(a)*6; y+=Math.sin(a)*6; ctx.lineTo(x,y); }
+    ctx.strokeStyle = v%5===0?`rgba(214,186,130,${.18+r()*.2})`:`rgba(230,225,215,${.04+r()*.1})`;
+    ctx.lineWidth=.6+r()*1.6; ctx.stroke();
+  }
+}
+function plaqueDraw(ctx,w,h){
+  ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='#fff'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.font='300 '+h*.36+'px "Cormorant Garamond", Georgia, serif';
+  const word='I L I Y A'; ctx.fillText(word,w/2,h*.42);
+  ctx.font='400 '+h*.11+'px Manrope, sans-serif'; ctx.fillText('G R A N D   C O L L E C T O R   E D I T I O N',w/2,h*.76);
+}
+
+/* ---------------------------------------------------------------
+   Materials
+---------------------------------------------------------------- */
+function makeMaterials(){
+  const sandMap=canvasTex(512,512,sandDraw); sandMap.wrapS=sandMap.wrapT=THREE.RepeatWrapping; sandMap.repeat.set(3.2,.8);
+  const sandTop=canvasTex(512,512,sandDraw); sandTop.wrapS=sandTop.wrapT=THREE.RepeatWrapping; sandTop.repeat.set(2.5,2.5);
+  const bandC=canvasTex(1024,256,bandDraw(5,false)), bandM=canvasTex(1024,256,bandDraw(5,true),false);
+  const drumC=canvasTex(2048,256,drumDraw(false)), drumM=canvasTex(2048,256,drumDraw(true),false);
+  const marble=canvasTex(1024,1024,marbleDraw); marble.wrapS=marble.wrapT=THREE.RepeatWrapping;
+  const enamelProps={metalness:0, roughness:.18, clearcoat:1, clearcoatRoughness:.04, envMapIntensity:1.1};
+  return {
+    gold:   new THREE.MeshPhysicalMaterial({color:0xf0c060, metalness:1, roughness:.17, envMapIntensity:1.25}),
+    goldSatin:new THREE.MeshPhysicalMaterial({color:0xe6b45a, metalness:1, roughness:.3, envMapIntensity:1.15}),
+    goldDeep:new THREE.MeshPhysicalMaterial({color:0xc99a48, metalness:1, roughness:.38, envMapIntensity:.9}),
+    recess: new THREE.MeshStandardMaterial({color:0x080605, roughness:.85, metalness:.2}),
+    door:   new THREE.MeshStandardMaterial({color:0x3a120b, roughness:.55, metalness:.3}),
+    band:   new THREE.MeshPhysicalMaterial({...enamelProps, map:bandC, metalnessMap:bandM}),
+    drum:   new THREE.MeshPhysicalMaterial({...enamelProps, map:drumC, metalnessMap:drumM}),
+    enamel: new THREE.MeshPhysicalMaterial({...enamelProps, color:0x1a3790}),
+    glass:  new THREE.MeshPhysicalMaterial({color:0xfffaf0, metalness:0, roughness:0, transmission:1, thickness:.12, ior:1.52, specularIntensity:1, envMapIntensity:1.1, clearcoat:1, clearcoatRoughness:0, side:THREE.DoubleSide, transparent:true}),
+    cloche: new THREE.MeshPhysicalMaterial({color:0xffffff, metalness:0, roughness:.02, transmission:1, thickness:.05, ior:1.5, envMapIntensity:1.6, transparent:true, opacity:1, side:THREE.DoubleSide, depthWrite:false}),
+    sand:   new THREE.MeshStandardMaterial({map:sandMap, bumpMap:sandMap, bumpScale:2.2, roughness:.95, metalness:0, emissive:0x1c1006, emissiveIntensity:.6}),
+    sandTop:new THREE.MeshStandardMaterial({map:sandTop, bumpMap:sandTop, bumpScale:.8, roughness:1, metalness:0}),
+    diamond:new THREE.MeshPhysicalMaterial({color:0xffffff, metalness:0, roughness:0, ior:2.42, reflectivity:1, specularIntensity:1, envMapIntensity:3.2, flatShading:true, iridescence:.35, iridescenceIOR:1.6}),
+    marble: new THREE.MeshPhysicalMaterial({map:marble, roughness:.12, metalness:0, clearcoat:1, clearcoatRoughness:.05, envMapIntensity:.7}),
+    plaque: new THREE.MeshPhysicalMaterial({color:0xe9be6a, metalness:1, roughness:.25, roughnessMap:null}),
+    plaqueTex: canvasTex(1024,256,plaqueDraw,false),
+  };
+}
+
+/* ---------------------------------------------------------------
+   Geometry helpers
+---------------------------------------------------------------- */
+function archPath(Cls,cx,y0,w,spring){ const r=w/2, p=new Cls(); p.moveTo(cx-r,y0); p.lineTo(cx+r,y0); p.lineTo(cx+r,spring); p.absarc(cx,spring,r,0,Math.PI,false); p.lineTo(cx-r,y0); return p; }
+function archFrame(cx,y0,w,spring,t){ const R0=w/2, R1=R0+t, s=new THREE.Shape();
+  s.moveTo(cx-R1,y0); s.lineTo(cx-R1,spring); s.absarc(cx,spring,R1,Math.PI,0,true); s.lineTo(cx+R1,y0); s.lineTo(cx+R0,y0); s.lineTo(cx+R0,spring); s.absarc(cx,spring,R0,0,Math.PI,false); s.lineTo(cx-R0,y0); return s; }
+function brilliant(){ // faceted round brilliant, unit diameter
+  const pts=[new THREE.Vector2(0,-.43),new THREE.Vector2(.5,0),new THREE.Vector2(.5,.03),new THREE.Vector2(.3,.16),new THREE.Vector2(0,.16)];
+  const g=new THREE.LatheGeometry(pts,8); g.computeVertexNormals(); return g;
+}
+const DIAMOND_GEO = brilliant();
+function instanced(geo,mat,mats){ const m=new THREE.InstancedMesh(geo,mat,mats.length); mats.forEach((mx,i)=>m.setMatrixAt(i,mx)); m.instanceMatrix.needsUpdate=true; return m; }
+const _o=new THREE.Object3D();
+function M(px,py,pz,rx=0,ry=0,rz=0,s=1){ _o.position.set(px,py,pz); _o.rotation.set(rx,ry,rz); _o.scale.setScalar(s); _o.updateMatrix(); return _o.matrix.clone(); }
+function columnGeo(h){ const shaft=new THREE.CylinderGeometry(.021,.024,h,12); shaft.translate(0,h/2,0);
+  const cap=new THREE.BoxGeometry(.07,.028,.07); cap.translate(0,h+.014,0);
+  const cap2=new THREE.CylinderGeometry(.032,.024,.03,12); cap2.translate(0,h-.012,0);
+  const base=new THREE.BoxGeometry(.064,.022,.064); base.translate(0,.011,0);
+  return mergeGeometries([shaft,cap,cap2,base]); }
+
+/* ---------------------------------------------------------------
+   THE CREATION — one geometry for both sizes
+   Units: 1 unit = 10 mm at pendant scale.
+---------------------------------------------------------------- */
+function buildCreation(m,{bail=true}={}){
+  const root=new THREE.Group(); root.name='creation';
+  const R=2.0, A=R*Math.cos(Math.PI/8), W=2*R*Math.sin(Math.PI/8);
+  const octRot=Math.PI/8;
+  const diamonds=[];
+  let y=0;
+
+  // — base ring
+  const base1=new THREE.Mesh(new THREE.CylinderGeometry(1.98,2.02,.1,96),m.gold); base1.position.y=.05; root.add(base1);
+  const base2=new THREE.Mesh(new THREE.TorusGeometry(1.93,.045,12,120),m.gold); base2.rotation.x=Math.PI/2; base2.position.y=.13; root.add(base2);
+  y=.14;
+  // — sand chamber
+  const chH=.92, chR=1.86;
+  const glass=new THREE.Mesh(new THREE.CylinderGeometry(chR,chR,chH,128,1,true),m.glass); glass.position.y=y+chH/2; glass.renderOrder=2; root.add(glass);
+  const sandH=.58;
+  const sand=new THREE.Mesh(new THREE.CylinderGeometry(chR-.05,chR-.05,sandH,128,1,true),m.sand); sand.position.y=y+sandH/2; root.add(sand);
+  const st=new THREE.RingGeometry(.001,chR-.05,128,22); const p=st.attributes.position; const rr=rng(5);
+  for(let i=0;i<p.count;i++){ const x=p.getX(i), z=p.getY(i), d=Math.hypot(x,z)/(chR-.05);
+    p.setZ(i, (1-d*d)*.07 + Math.sin(x*3.1)*Math.cos(z*2.7)*.025 + (rr()-.5)*.012); }
+  st.computeVertexNormals(); const sandTop=new THREE.Mesh(st,m.sandTop); sandTop.rotation.x=-Math.PI/2; sandTop.position.y=y+sandH; root.add(sandTop);
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(chR,64),m.goldDeep); floor.rotation.x=-Math.PI/2; floor.position.y=y+.002; root.add(floor);
+  y+=chH;
+  // — upper chamber ring with diamond row
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(chR+.02,.055,14,140),m.gold); ring.rotation.x=Math.PI/2; ring.position.y=y; root.add(ring);
+  for(let i=0;i<72;i++){ const a=i/72*TAU; diamonds.push(M(Math.sin(a)*(chR+.07),y,Math.cos(a)*(chR+.07),Math.PI/2,0,-a,.062)); }
+  for(let i=0;i<72;i++){ const a=(i+.5)/72*TAU; diamonds.push(M(Math.sin(a)*(chR+.07),.14-.02,Math.cos(a)*(chR+.07),Math.PI/2,0,-a,.055)); }
+  // — octagonal plinth
+  const plH=.14; const plinth=new THREE.Mesh(new THREE.CylinderGeometry(R*1.035,R*.99,plH,8),m.gold); plinth.rotation.y=octRot; plinth.position.y=y+.03+plH/2; root.add(plinth);
+  y+=.03+plH;
+
+  // — ARCADE (8 faces, complete in 360°)
+  const H=1.16, y0=.06, n=5, bay=W/n, aw=bay*.58, spring=.55;
+  const core=new THREE.Mesh(new THREE.CylinderGeometry(R*.9,R*.9,H,8),m.recess); core.rotation.y=octRot; core.position.y=y+H/2; root.add(core);
+  const faceShape=new THREE.Shape(); faceShape.moveTo(-W/2,0); faceShape.lineTo(W/2,0); faceShape.lineTo(W/2,H); faceShape.lineTo(-W/2,H); faceShape.lineTo(-W/2,0);
+  for(let k=0;k<n;k++) faceShape.holes.push(archPath(THREE.Path,-W/2+bay*(k+.5),y0,aw,spring));
+  const faceGeo=new THREE.ExtrudeGeometry(faceShape,{depth:.05,bevelEnabled:true,bevelThickness:.006,bevelSize:.005,bevelSegments:1,curveSegments:12});
+  const frames=[]; for(let k=0;k<n;k++) frames.push(archFrame(-W/2+bay*(k+.5),y0,aw,spring,.022));
+  const frameGeo=new THREE.ExtrudeGeometry(frames,{depth:.022,bevelEnabled:false,curveSegments:12});
+  const doorGeo=new THREE.ShapeGeometry(archPath(THREE.Shape,0,y0,aw,spring),12);
+  const bandGeo=new THREE.PlaneGeometry(W*.985,.33);
+  const courseGeo=new THREE.BoxGeometry(W,.032,.04);
+  const friezeGeo=new THREE.BoxGeometry(W,.06,.035);
+  const colG=columnGeo(spring-y0-.02);
+  const colMats=[];
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4; const face=new THREE.Group(); face.rotation.y=a; face.position.y=y; root.add(face);
+    const panel=new THREE.Mesh(faceGeo,m.goldSatin); panel.position.z=A-.03; face.add(panel);
+    const fr=new THREE.Mesh(frameGeo,m.gold); fr.position.z=A+.026; face.add(fr);
+    if(i%2===0){ const d=new THREE.Mesh(doorGeo,m.door); d.position.set(0,0,A-.02); face.add(d); }
+    const course=new THREE.Mesh(courseGeo,m.gold); course.position.set(0,spring+aw/2+.06,A+.035); face.add(course);
+    const band=new THREE.Mesh(bandGeo,m.band); band.position.set(0,.88,A+.031); face.add(band);
+    const frieze=new THREE.Mesh(friezeGeo,m.gold); frieze.position.set(0,H-.035,A+.03); face.add(frieze);
+    for(let k=1;k<n;k++){ const x=-W/2+bay*k; const v=new THREE.Vector3(x,y0+y,A+.07).applyAxisAngle(new THREE.Vector3(0,1,0),a); colMats.push(M(v.x,v.y,v.z,0,a,0)); }
+    // diamonds on string course
+    for(let k=0;k<11;k++){ const x=-W/2+.07+(W-.14)*k/10; const v=new THREE.Vector3(x,y+spring+aw/2+.06,A+.058).applyAxisAngle(new THREE.Vector3(0,1,0),a); diamonds.push(M(v.x,v.y,v.z,Math.PI/2,0,0,.03).premultiply(new THREE.Matrix4().makeRotationY(0))); }
+  }
+  // fix diamond orientation for course (face outward)
+  root.add(instanced(colG,m.gold,colMats));
+  // corner pilasters with diamond studs
+  const pilG=new THREE.BoxGeometry(.11,H+.02,.11);
+  for(let i=0;i<8;i++){ const a=i*Math.PI/4+Math.PI/8, rx=Math.sin(a)*(R+.005), rz=Math.cos(a)*(R+.005);
+    const pil=new THREE.Mesh(pilG,m.gold); pil.position.set(rx,y+H/2,rz); pil.rotation.y=a; root.add(pil);
+    for(let j=0;j<4;j++){ const v=new THREE.Vector3(0,y+.18+j*.27,R+.065).applyAxisAngle(new THREE.Vector3(0,1,0),a); diamonds.push(M(v.x,v.y,v.z,-Math.PI/2,0,0,.05).premultiply(new THREE.Matrix4())); }
+  }
+  y+=H;
+  // cornice + diamond line
+  const corn=new THREE.Mesh(new THREE.CylinderGeometry(R*1.06,R*1.02,.09,8),m.gold); corn.rotation.y=octRot; corn.position.y=y+.045; root.add(corn);
+  const corR=R*1.06;
+  for(let i=0;i<8;i++){ const a0=i*Math.PI/4-Math.PI/8, a1=a0+Math.PI/4; const p0=new THREE.Vector3(Math.sin(a0)*corR,0,Math.cos(a0)*corR), p1=new THREE.Vector3(Math.sin(a1)*corR,0,Math.cos(a1)*corR);
+    for(let k=0;k<12;k++){ const t=(k+.5)/12; const v=p0.clone().lerp(p1,t); diamonds.push(M(v.x*1.0,y+.095,v.z*1.0,0,0,0,.045)); } }
+  y+=.09;
+  // roof transition
+  const roof=new THREE.Mesh(new THREE.CylinderGeometry(1.38,R*1.0,.16,8),m.goldSatin); roof.rotation.y=octRot; roof.position.y=y+.08; root.add(roof);
+  y+=.16;
+
+  // — DRUM
+  const dR=1.3, dH=.5;
+  const drum=new THREE.Mesh(new THREE.CylinderGeometry(dR,dR,dH,96),m.gold); drum.position.y=y+dH/2; root.add(drum);
+  const dband=new THREE.Mesh(new THREE.CylinderGeometry(dR+.006,dR+.006,dH*.72,128,1,true),m.drum); dband.position.y=y+dH/2; root.add(dband);
+  const winG=new THREE.ShapeGeometry(archPath(THREE.Shape,0,-.11,.11,.04),10);
+  const winF=new THREE.ExtrudeGeometry(archFrame(0,-.11,.11,.04,.016),{depth:.02,bevelEnabled:false,curveSegments:10});
+  for(let k=0;k<16;k++){ const a=k/16*TAU;
+    const w=new THREE.Mesh(winG,m.recess); w.position.set(Math.sin(a)*(dR+.012),y+dH/2,Math.cos(a)*(dR+.012)); w.rotation.y=a; root.add(w);
+    const f=new THREE.Mesh(winF,m.gold); f.position.set(Math.sin(a)*(dR+.008),y+dH/2,Math.cos(a)*(dR+.008)); f.rotation.y=a; root.add(f); }
+  const tr1=new THREE.Mesh(new THREE.TorusGeometry(dR+.02,.028,10,120),m.gold); tr1.rotation.x=Math.PI/2; tr1.position.y=y+.02; root.add(tr1);
+  y+=dH;
+  const tr2=new THREE.Mesh(new THREE.TorusGeometry(dR+.03,.04,12,120),m.gold); tr2.rotation.x=Math.PI/2; tr2.position.y=y; root.add(tr2);
+  for(let i=0;i<56;i++){ const a=i/56*TAU; diamonds.push(M(Math.sin(a)*(dR+.07),y+.005,Math.cos(a)*(dR+.07),Math.PI/2,0,-a,.05)); }
+  y+=.03;
+
+  // — DOME: lathe profile, meridians and rings form the gold grid
+  const domeR=1.27, domeH=1.12, prof=[], N=56;
+  const domeP=t=>{ const th=t*Math.PI/2; const r=domeR*(1+.07*Math.sin(th*2))*Math.cos(th)**.92; const yy=domeH*Math.sin(th)+ (t>.92? (t-.92)*1.1 : 0); return new THREE.Vector2(Math.max(r,0.0001),yy); };
+  for(let i=0;i<=N;i++) prof.push(domeP(i/N));
+  const dome=new THREE.Mesh(new THREE.LatheGeometry(prof,128),m.goldSatin); dome.position.y=y; root.add(dome);
+  const ribs=[];
+  for(let k=0;k<32;k++){ const a=k/32*TAU; const pts=[];
+    for(let i=0;i<=40;i++){ const t=i/40*.97; const v=domeP(t); pts.push(new THREE.Vector3(Math.sin(a)*(v.x+.012),v.y+.004,Math.cos(a)*(v.x+.012))); }
+    ribs.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),40,.011,5,false)); }
+  for(const t of [.12,.26,.4,.54,.67,.79]){ const v=domeP(t); const tor=new THREE.TorusGeometry(v.x+.008,.011,6,128); tor.rotateX(Math.PI/2); tor.translate(0,v.y,0); ribs.push(tor); }
+  const grid=new THREE.Mesh(mergeGeometries(ribs),m.gold); grid.position.y=y; root.add(grid);
+  const apex=domeP(1).y; y+=apex;
+  // finial
+  const fin1=new THREE.Mesh(new THREE.SphereGeometry(.07,24,16),m.gold); fin1.position.y=y+.03; root.add(fin1);
+  const fin2=new THREE.Mesh(new THREE.CylinderGeometry(.018,.03,.16,16),m.gold); fin2.position.y=y+.15; root.add(fin2);
+  const fin3=new THREE.Mesh(new THREE.SphereGeometry(.035,16,12),m.gold); fin3.position.y=y+.25; root.add(fin3);
+  y+=.28;
+
+  const dm=instanced(DIAMOND_GEO,m.diamond,diamonds); root.add(dm);
+  root.userData.top=y;
+
+  // — bail (pendant only)
+  if(bail){
+    const bg=new THREE.Group(); bg.name='bail'; bg.position.y=y;
+    const tongue=new THREE.Mesh(new THREE.CylinderGeometry(.11,.07,.52,24),m.gold); tongue.scale.z=.6; tongue.position.y=.26; bg.add(tongue);
+    const bd=[]; for(let j=0;j<4;j++) bd.push(M(0,.1+j*.11,.07,-Math.PI/2,0,0,.085-j*.006));
+    bg.add(instanced(DIAMOND_GEO,m.diamond,bd));
+    const loop=new THREE.Mesh(new THREE.TorusGeometry(.2,.055,16,48),m.gold); loop.position.y=.66; loop.rotation.y=Math.PI/2; bg.add(loop);
+    root.add(bg); root.userData.bailTop=y+.86;
+  }
+  // normalise: 45 mm wide = 4.5 units
+  const box=new THREE.Box3().setFromObject(root); const size=box.getSize(new THREE.Vector3());
+  root.userData.scale=4.5/Math.max(size.x,size.z);
+  return root;
+}
+
+function buildChain(m, from, links=46){
+  const g=new THREE.Group(); const linkGeo=new THREE.TorusGeometry(.14,.036,10,28); linkGeo.scale(1.45,1,1);
+  const mats=[], stations=[], dmats=[];
+  for(const side of [-1,1]){
+    const dir=new THREE.Vector3(side*Math.sin(.2),Math.cos(.2),0);
+    for(let i=0;i<links;i++){
+      const p=from.clone().addScaledVector(dir,.12+i*.3);
+      const rotZ=Math.PI/2 - side*.2;
+      if(i>0 && i%9===0){ stations.push(M(p.x,p.y,p.z,0,0,rotZ)); dmats.push(M(p.x,p.y,p.z+.05,-Math.PI/2,0,0,.11)); continue; }
+      mats.push(M(p.x,p.y,p.z, i%2?Math.PI/2:0, 0, rotZ).multiply(new THREE.Matrix4().makeRotationX(i%2?Math.PI/2:0)));
+    }
+  }
+  g.add(instanced(linkGeo,m.gold,mats));
+  const st=new THREE.CylinderGeometry(.09,.09,.14,24); st.rotateX(Math.PI/2);
+  g.add(instanced(st,m.gold,stations)); g.add(instanced(DIAMOND_GEO,m.diamond,dmats));
+  return g;
+}
+
+function buildDisplay(m, s){ // Grand Collector presentation — plinth + cloche; the object itself is unchanged
+  const g=new THREE.Group();
+  const pR=7.6, pH=2.4;
+  const plinth=new THREE.Mesh(new THREE.CylinderGeometry(pR,pR*1.04,pH,8),m.marble); plinth.rotation.y=Math.PI/8; plinth.position.y=-pH/2; g.add(plinth);
+  const lip=new THREE.Mesh(new THREE.CylinderGeometry(pR*1.01,pR*1.01,.08,8),m.gold); lip.rotation.y=Math.PI/8; lip.position.y=-.04; g.add(lip);
+  const foot=new THREE.Mesh(new THREE.CylinderGeometry(pR*1.08,pR*1.1,.22,8),m.marble); foot.rotation.y=Math.PI/8; foot.position.y=-pH-.11; g.add(foot);
+  const footLip=new THREE.Mesh(new THREE.CylinderGeometry(pR*1.045,pR*1.045,.05,8),m.gold); footLip.rotation.y=Math.PI/8; footLip.position.y=-pH+.0; g.add(footLip);
+  const disc=new THREE.Mesh(new THREE.CylinderGeometry(6.4,6.5,.18,96),m.goldDeep); disc.position.y=.09; g.add(disc);
+  const plq=new THREE.Mesh(new THREE.PlaneGeometry(4.4,1.1),new THREE.MeshPhysicalMaterial({color:0xe2b766,metalness:1,roughness:.32,roughnessMap:null, bumpMap:m.plaqueTex, bumpScale:2.5, metalnessMap:null}));
+  const Ap=pR*Math.cos(Math.PI/8); plq.position.set(0,-pH/2,Ap*1.003+.01); g.add(plq);
+  // cloche
+  const cr=6.75, ch=10.5; const pts=[];
+  pts.push(new THREE.Vector2(cr,0)); pts.push(new THREE.Vector2(cr,ch));
+  for(let i=1;i<=24;i++){ const a=i/24*Math.PI/2; pts.push(new THREE.Vector2(Math.cos(a)*cr, ch+Math.sin(a)*cr*.85)); }
+  const cloche=new THREE.Mesh(new THREE.LatheGeometry(pts,96),m.cloche); cloche.position.y=.18; cloche.renderOrder=5; cloche.name='cloche'; g.add(cloche);
+  const cring=new THREE.Mesh(new THREE.TorusGeometry(cr+.02,.08,12,128),m.gold); cring.rotation.x=Math.PI/2; cring.position.y=.2; g.add(cring);
+  return g;
+}
+
+/* ---------------------------------------------------------------
+   Studio environment — dark room with warm softboxes, for reflections
+---------------------------------------------------------------- */
+function makeEnv(renderer, mood='gallery'){
+  const s=new THREE.Scene(); s.background=new THREE.Color(0x030303);
+  const panel=(w,h,col,k,pos)=>{ const mesh=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(col).multiplyScalar(k),side:THREE.DoubleSide})); mesh.position.set(...pos); mesh.lookAt(0,0,0); s.add(mesh); };
+  if(mood==='gallery'){
+    panel(10,3,0xffe2b0,5,[0,9,3]); panel(1.4,12,0xfff3dc,4.2,[-9,1,3]); panel(1.4,12,0xffe0b4,3,[9,2,-2]);
+    panel(8,1.2,0xffffff,2,[0,3,-10]); panel(12,1,0x8fa6ff,.7,[0,-3,9]); panel(20,20,0x24180c,1,[0,-10,0]);
+    panel(3,3,0xffffff,3,[-5,5,8]);
+  } else {
+    panel(14,4,0xff9a50,3.6,[-8,2,6]); panel(10,2,0x6a86ff,1.4,[8,6,-4]); panel(2,10,0xffd9a8,2.4,[6,0,8]);
+    panel(20,20,0x1a0f08,1,[0,-10,0]); panel(6,1,0xffc890,3,[0,9,0]);
+  }
+  const pm=new THREE.PMREMGenerator(renderer); const t=pm.fromScene(s,.035).texture; pm.dispose(); return t;
+}
+
+function glowTexture(inner='rgba(255,214,150,0.55)'){
+  return canvasTex(256,256,(c,w,h)=>{ const g=c.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2); g.addColorStop(0,inner); g.addColorStop(.4,'rgba(200,140,70,0.12)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,w,h); });
+}
+function shadowTexture(){ return canvasTex(256,256,(c,w,h)=>{ const g=c.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2); g.addColorStop(0,'rgba(0,0,0,0.85)'); g.addColorStop(.6,'rgba(0,0,0,0.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,w,h); }); }
+
+function makeRenderer(canvas){
+  let r; try{ r=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'}); }catch(e){ return null; }
+  r.setPixelRatio(Math.min(devicePixelRatio, MOBILE?1.6:2));
+  r.toneMapping=THREE.ACESFilmicToneMapping; r.toneMappingExposure=1.05; r.setClearColor(0x000000,0);
+  return r;
+}
+function lights(scene){
+  const key=new THREE.SpotLight(0xffd6a0,0,0,.42,.8,0); key.position.set(3,14,6); scene.add(key); scene.add(key.target);
+  const rim=new THREE.DirectionalLight(0x8ea8ff,0); rim.position.set(-6,4,-8); scene.add(rim);
+  const fill=new THREE.DirectionalLight(0xffe6c4,0); fill.position.set(-4,2,8); scene.add(fill);
+  const amb=new THREE.HemisphereLight(0x332a20,0x050403,0); scene.add(amb);
+  return {key,rim,fill,amb};
+}
+
+/* ---------------------------------------------------------------
+   HERO — cinematic, scroll-driven
+---------------------------------------------------------------- */
+const heroCanvas=document.getElementById('heroCanvas');
+const heroR=makeRenderer(heroCanvas);
+let heroState=null;
+if(!heroR){ document.getElementById('heroFallback').style.display='flex'; }
+else {
+  const mats=makeMaterials();
+  const scene=new THREE.Scene(); scene.environment=makeEnv(heroR,'gallery');
+  const cam=new THREE.PerspectiveCamera(30,1,.1,200);
+  const L=lights(scene);
+  const piece=new THREE.Group(); scene.add(piece);
+  const creation=buildCreation(mats,{bail:true}); const s=creation.userData.scale; creation.scale.setScalar(s); piece.add(creation);
+  const chain=buildChain(mats,new THREE.Vector3(0,creation.userData.bailTop-.12,0)); chain.scale.setScalar(s); piece.add(chain);
+  // light pool + soft shadow
+  const pool=new THREE.Mesh(new THREE.PlaneGeometry(14,14),new THREE.MeshBasicMaterial({map:glowTexture(),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
+  pool.rotation.x=-Math.PI/2; pool.position.y=-.02; scene.add(pool);
+  const sh=new THREE.Mesh(new THREE.PlaneGeometry(6.5,6.5),new THREE.MeshBasicMaterial({map:shadowTexture(),transparent:true,depthWrite:false})); sh.rotation.x=-Math.PI/2; sh.position.y=-.01; scene.add(sh);
+  // light shaft
+  const beamMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,uniforms:{uI:{value:0}},
+    vertexShader:`varying vec2 vUv; varying vec3 vN; varying vec3 vV; void main(){ vUv=uv; vec4 mv=modelViewMatrix*vec4(position,1.); vN=normalize(normalMatrix*normal); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }`,
+    fragmentShader:`uniform float uI; varying vec2 vUv; varying vec3 vN; varying vec3 vV; void main(){ float f=pow(abs(dot(vN,vV)),2.2); float a=pow(vUv.y,1.6)*f*uI*.11; gl_FragColor=vec4(1.,.82,.55,a); }`});
+  const beam=new THREE.Mesh(new THREE.CylinderGeometry(.35,4.2,16,48,1,true),beamMat); beam.position.y=8; scene.add(beam);
+  // dust in the light
+  const dustN=MOBILE?160:360, dp=new Float32Array(dustN*3), rr=rng(9);
+  for(let i=0;i<dustN;i++){ const a=rr()*TAU, r=Math.sqrt(rr())*3.2; dp[i*3]=Math.cos(a)*r; dp[i*3+1]=rr()*10; dp[i*3+2]=Math.sin(a)*r; }
+  const dg=new THREE.BufferGeometry(); dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
+  const dust=new THREE.Points(dg,new THREE.PointsMaterial({size:.035,map:glowTexture('rgba(255,230,190,1)'),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:0,color:0xffe1b0}));
+  scene.add(dust);
+
+  // camera beats: azimuth, elevation, distance, target height
+  const BEATS=[
+    {az:.0,  el:.08, d:20, ty:.55},
+    {az:.62, el:.03, d:6.4,  ty:1.95},
+    {az:-.42,el:.62, d:6.2,  ty:3.9},
+    {az:.3,  el:-.06,d:5.6,  ty:.75},
+    {az:.0,  el:.12, d:19, ty:.7},
+  ];
+  heroState={scene,cam,L,piece,beamMat,dust,BEATS,p:0,cur:{az:0,el:.08,d:20,ty:.55},t0:performance.now(),visible:true};
+}
+
+const beats=[...document.querySelectorAll('.beat')], progEls=[...document.querySelectorAll('.progress span')];
+const stage=document.getElementById('stage'), cue=document.getElementById('cue'), hdr=document.getElementById('hdr');
+function stageProgress(){ const r=stage.getBoundingClientRect(); const total=r.height-innerHeight; return Math.min(1,Math.max(0,-r.top/total)); }
+const ss=t=>t*t*(3-2*t);
+function updateBeats(p, intro){
+  const seg=p*4; // 0..4
+  beats.forEach((el,i)=>{
+    let o=1-Math.min(1,Math.abs(seg-i)/.42); o=Math.max(0,o); o=ss(o);
+    if(i===0) o = (seg<.42? 1-ss(Math.min(1,seg/.42)) : 0) * intro;
+    el.style.opacity=o.toFixed(3);
+    el.style.transform = el.classList.contains('side') ? (MOBILE?`translateY(${(1-o)*20}px)`:`translateY(calc(-50% + ${(1-o)*24}px))`) : `translateY(${(1-o)*18}px)`;
+    el.classList.toggle('on',o>.5);
+  });
+  progEls.forEach((e,i)=>e.classList.toggle('on',Math.round(seg)===i));
+  cue.style.opacity = (1-Math.min(1,p*14))*intro;
+  hdr.classList.toggle('scrolled',scrollY>40);
+}
+
+/* ---------------------------------------------------------------
+   STUDIO — interactive viewer
+---------------------------------------------------------------- */
+const studioCanvas=document.getElementById('studioCanvas');
+const stR=makeRenderer(studioCanvas);
+let studio=null;
+if(stR){
+  const mats=makeMaterials();
+  const scene=new THREE.Scene(); const envs={gallery:makeEnv(stR,'gallery'),dusk:makeEnv(stR,'dusk')}; scene.environment=envs.gallery;
+  const cam=new THREE.PerspectiveCamera(32,1,.05,400);
+  const L=lights(scene); L.key.intensity=2.6; L.rim.intensity=.8; L.fill.intensity=.35; L.amb.intensity=.4;
+  const controls=new OrbitControls(cam,studioCanvas); controls.enableDamping=true; controls.dampingFactor=.06; controls.rotateSpeed=.55; controls.zoomSpeed=.7; controls.enablePan=false;
+  controls.autoRotate=!REDUCED; controls.autoRotateSpeed=.45;
+  // pendant
+  const pend=new THREE.Group(); const c1=buildCreation(mats,{bail:true}); const s1=c1.userData.scale; c1.scale.setScalar(s1); pend.add(c1);
+  const ch=buildChain(mats,new THREE.Vector3(0,c1.userData.bailTop-.12,0),26); ch.scale.setScalar(s1); pend.add(ch);
+  const sh1=new THREE.Mesh(new THREE.PlaneGeometry(7,7),new THREE.MeshBasicMaterial({map:shadowTexture(),transparent:true,depthWrite:false})); sh1.rotation.x=-Math.PI/2; sh1.position.y=-.005; pend.add(sh1);
+  scene.add(pend);
+  // grand — identical geometry, uniformly scaled 114/45
+  const GRAND=114/45;
+  const grand=new THREE.Group(); const c2=buildCreation(mats,{bail:false}); c2.scale.setScalar(c2.userData.scale*GRAND); grand.add(c2);
+  const disp=buildDisplay(mats); grand.add(disp); c2.position.y=.18;
+  scene.add(grand);
+  const pool=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshBasicMaterial({map:glowTexture('rgba(255,214,150,0.35)'),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})); pool.rotation.x=-Math.PI/2; pool.position.y=-2.75; scene.add(pool);
+  const H1=new THREE.Box3().setFromObject(c1).getSize(new THREE.Vector3()).y;
+  const H2=new THREE.Box3().setFromObject(c2).getSize(new THREE.Vector3()).y;
+  studio={scene,cam,controls,L,pend,grand,c1,c2,disp,envs,H1,H2,mode:'pendant',tween:null,visible:false,GRAND};
+}
+
+const MODES={
+  pendant:{title:'The Pendant', dims:[['45 mm','Width'],['47.16 mm','Height'],['≈ 50 g','18K gold · target']], flag:'Preliminary targets — certified on completion.',
+    details:[['Full view',{az:.35,el:.18,d:16,ty:2.4}],['The dome',{az:-.5,el:.7,d:6.5,ty:3.9}],['The arcade',{az:.4,el:.02,d:6,ty:1.9}],['Enamel drum',{az:.9,el:.3,d:5.4,ty:3.0}],['Sand chamber',{az:.2,el:-.08,d:5.8,ty:.65}],['The rear',{az:Math.PI,el:.15,d:13,ty:2.4}],['Bail & chain',{az:.3,el:.1,d:5.2,ty:5.4}]]},
+  grand:{title:'Grand Collector Edition', dims:[['114 mm','Width*'],['120 mm','Height*'],['×2.53','Same geometry']], flag:'*Per reference board. The brief also describes "two 1.5 L bottles" (~180 × 300 mm). Awaiting confirmation.',
+    details:[['Full view',{az:.35,el:.16,d:46,ty:4.5}],['Within the cloche',{az:-.3,el:.1,d:26,ty:6}],['The dome',{az:-.5,el:.6,d:15,ty:10.3}],['Sand chamber',{az:.25,el:-.04,d:15,ty:2}],['The plinth',{az:.0,el:.05,d:22,ty:-1.4}],['The rear',{az:Math.PI,el:.15,d:40,ty:5}]]},
+  compare:{title:'Side by side', dims:[['1 : 2.53','Scale'],['One','Geometry']], flag:'True relative scale. Cloche removed for clarity.',
+    details:[['Both creations',{az:.25,el:.12,d:52,ty:5}],['From above',{az:.25,el:.9,d:46,ty:3}],['The rear',{az:Math.PI+.25,el:.12,d:52,ty:5}]]},
+};
+const vinfo=document.getElementById('vinfo'), detailsEl=document.getElementById('details'), labP=document.getElementById('labP'), labG=document.getElementById('labG');
+function camFrom(v){ const {az,el,d,ty}=v; return {pos:new THREE.Vector3(Math.sin(az)*Math.cos(el)*d, ty+Math.sin(el)*d, Math.cos(az)*Math.cos(el)*d), tgt:new THREE.Vector3(0,ty,0)}; }
+function goTo(v,instant){ if(!studio) return; const f=MOBILE?(studio.mode==='compare'?2.1:1.35):1; const c=camFrom({...v,d:v.d*f});
+  if(instant||REDUCED){ studio.cam.position.copy(c.pos); studio.controls.target.copy(c.tgt); studio.tween=null; studio.controls.update(); return; }
+  studio.tween={p0:studio.cam.position.clone(),t0:studio.controls.target.clone(),p1:c.pos,t1:c.tgt,start:performance.now(),dur:1900}; }
+function setMode(mode,instant){
+  const md=MODES[mode];
+  document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));
+  vinfo.innerHTML=`<div class="eyebrow" style="margin-bottom:10px">${mode==='compare'?'Two sizes · one architecture':'Visual prototype'}</div><h3>${md.title}</h3><div class="dims">${md.dims.map(d=>`<span><b>${d[0]}</b>${d[1]}</span>`).join('')}</div><div class="flag">${md.flag}</div>`;
+  detailsEl.innerHTML=md.details.map((d,i)=>`<button data-i="${i}" class="${i===0?'on':''}">${d[0]}</button>`).join('');
+  detailsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{ detailsEl.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); studio&&(studio.controls.autoRotate=false); goTo(md.details[+b.dataset.i][1]); });
+  if(!studio) return;
+  studio.mode=mode;
+  const {pend,grand,disp,controls}=studio;
+  pend.visible=true; grand.visible=mode!=='pendant'; pend.visible=mode!=='grand';
+  disp.getObjectByName('cloche').visible = mode==='grand';
+  if(mode==='compare'){ pend.position.set(-7,-2.62,4); grand.position.set(6,0,0);} else { pend.position.set(0,0,0); grand.position.set(0,0,0); }
+  if(mode==='pendant'){ controls.minDistance=3.2; controls.maxDistance=26; } else { controls.minDistance=8; controls.maxDistance=90; }
+  controls.minPolarAngle=.15; controls.maxPolarAngle=Math.PI*.62;
+  labP.style.opacity=labG.style.opacity=mode==='compare'?1:0;
+  goTo(md.details[0][1],instant);
+}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+document.querySelectorAll('[data-light]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-light]').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(studio){ studio.scene.environment=studio.envs[b.dataset.light]; studio.L.key.color.set(b.dataset.light==='dusk'?0xffb070:0xffd6a0);} });
+setMode('pendant',true);
+if(studio){ const stopAuto=()=>{ studio.controls.autoRotate=false; document.getElementById('hint').style.opacity=0; }; studioCanvas.addEventListener('pointerdown',stopAuto); studioCanvas.addEventListener('wheel',stopAuto,{passive:true}); }
+
+/* ---------------------------------------------------------------
+   Loop
+---------------------------------------------------------------- */
+function resize(r,cam,canvas){ const w=canvas.clientWidth,h=canvas.clientHeight; if(canvas.width!==Math.floor(w*r.getPixelRatio())||canvas.height!==Math.floor(h*r.getPixelRatio())){ r.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); } }
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.target===heroCanvas&&heroState) heroState.visible=e.isIntersecting; if(e.target===studioCanvas&&studio) studio.visible=e.isIntersecting; }),{rootMargin:'120px'});
+io.observe(heroCanvas); io.observe(studioCanvas);
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const v3=new THREE.Vector3();
+function frame(now){
+  requestAnimationFrame(frame);
+  const p=stageProgress();
+  const intro=REDUCED?1:Math.min(1,Math.max(0,(now-1400)/1600));
+  updateBeats(p,intro);
+  if(heroState&&heroState.visible){
+    const H=heroState, t=(now-H.t0)/1000;
+    resize(heroR,H.cam,heroCanvas);
+    // light reveal
+    const rv=REDUCED?1:ss(Math.min(1,t/3.6));
+    H.L.key.intensity=3.2*rv; H.L.rim.intensity=.9*rv; H.L.fill.intensity=.28*rv; H.L.amb.intensity=.35*rv; heroR.toneMappingExposure=.15+.9*rv;
+    H.beamMat.uniforms.uI.value=rv*(1-p*.4); H.dust.material.opacity=.55*rv;
+    // camera along beats
+    const seg=Math.min(3.999,p*4), i=Math.floor(seg), f=ss(seg-i), a=H.BEATS[i], b=H.BEATS[i+1];
+    const tgt={az:a.az+(b.az-a.az)*f, el:a.el+(b.el-a.el)*f, d:a.d+(b.d-a.d)*f, ty:a.ty+(b.ty-a.ty)*f};
+    const k=REDUCED?1:.06; for(const key in tgt) H.cur[key]+= (tgt[key]-H.cur[key])*k;
+    const narrow=H.cam.aspect<1? 1.0/Math.max(.55,H.cam.aspect)*.78 : 1;
+    const introPush = REDUCED?0:(1-rv)*3.5;
+    const c=camFrom({...H.cur,d:H.cur.d*narrow+introPush});
+    const sway=REDUCED?0:Math.sin(t*.25)*.06;
+    H.cam.position.copy(c.pos).add(v3.set(sway,Math.sin(t*.19)*.04,0)); H.cam.lookAt(c.tgt);
+    H.piece.rotation.y = p*Math.PI*1.15 + (REDUCED?0:t*.035);
+    const dp=H.dust.geometry.attributes.position; if(!REDUCED){ for(let j=0;j<dp.count;j++){ let y=dp.getY(j)+.0025; if(y>10) y=0; dp.setY(j,y); } dp.needsUpdate=true; }
+    heroR.render(H.scene,H.cam);
+  }
+  if(studio&&studio.visible){
+    const S=studio; resize(stR,S.cam,studioCanvas);
+    if(S.tween){ const q=Math.min(1,(now-S.tween.start)/S.tween.dur), e=ease(q); S.cam.position.lerpVectors(S.tween.p0,S.tween.p1,e); S.controls.target.lerpVectors(S.tween.t0,S.tween.t1,e); if(q>=1) S.tween=null; }
+    S.controls.update();
+    if(S.mode==='compare'){ // project labels under each object
+      const proj=(obj,y)=>{ const v=obj.position.clone(); v.y+=y; v.project(S.cam); return [(v.x*.5+.5)*studioCanvas.clientWidth,(-v.y*.5+.5)*studioCanvas.clientHeight]; };
+      const a=proj(S.pend,-.6), b=proj(S.grand,-5.4);
+      labP.style.left=a[0]+'px'; labP.style.top=a[1]+'px'; labG.style.left=b[0]+'px'; labG.style.top=b[1]+'px';
+    }
+    stR.render(S.scene,S.cam);
+  }
+}
+requestAnimationFrame(frame);
+
+/* reveal-on-scroll & form */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} }),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const note=document.getElementById('formnote');
+document.getElementById('enq').addEventListener('submit',e=>{ e.preventDefault(); note.textContent='Prototype — this form is not yet connected. In the build, enquiries are encrypted and routed to the private concierge.'; });
+document.getElementById('viewingBtn').onclick=()=>{ note.textContent='Prototype — private viewing requests will open a confidential scheduling step in the build.'; };
+window.__ready=true;
+</script>
+</body>
+</html>
