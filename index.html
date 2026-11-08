@@ -64,6 +64,7 @@ nav.main a:hover{color:var(--ivory)}
 .side .num:after{content:"";width:46px;height:1px;background:var(--gold)}
 .side h2{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.2vw,46px);line-height:1.1;letter-spacing:.04em;margin-bottom:20px}
 .side p{color:var(--mute);font-size:14.5px;max-width:360px}
+.side:before{content:"";position:absolute;inset:-60px -80px;z-index:-1;background:radial-gradient(ellipse at center,rgba(5,5,5,.72),transparent 70%)}
 .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--mute)}
 .scrollcue i{width:1px;height:38px;background:linear-gradient(var(--champagne),transparent);animation:cue 2.6s ease-in-out infinite;transform-origin:top}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -263,6 +264,37 @@ footer small{display:block;margin-top:40px;font-size:9.5px;letter-spacing:.3em;t
 .reveal{opacity:0;transform:translateY(26px);transition:opacity 1.4s cubic-bezier(.2,.7,.1,1),transform 1.4s cubic-bezier(.2,.7,.1,1)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.grain{animation:none}.scrollcue i{animation:none}}
+
+/* hero photo */
+#hero{position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:3vw;padding:110px 5vw 70px;background:radial-gradient(ellipse 55% 60% at 64% 50%,#1a120b 0%,#0a0806 55%,#050505 85%);overflow:hidden}
+.hero-copy{position:relative;z-index:2;max-width:560px;padding-left:2vw}
+.hero-copy h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.3vw,68px);letter-spacing:.06em;line-height:1.08;margin:28px 0 0;opacity:0;animation:rise 1.8s 1.6s cubic-bezier(.2,.7,.1,1) forwards}
+.hero-copy h1 em{font-style:italic;color:var(--champagne);letter-spacing:.03em}
+.hero-copy p{margin:24px 0 36px;max-width:420px;color:var(--mute);font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.5vw,21px);opacity:0;animation:rise 1.8s 2.1s cubic-bezier(.2,.7,.1,1) forwards}
+.hero-copy .eyebrow{opacity:0;animation:rise 1.6s 1.2s forwards}
+.hero-copy .ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise 1.6s 2.5s forwards}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-photo{position:relative;justify-self:center;width:min(100%,calc(86vh*1.06));aspect-ratio:945/892;margin:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;-webkit-mask-image:radial-gradient(ellipse 60% 62% at 50% 54%,#000 42%,transparent 100%);mask-image:radial-gradient(ellipse 60% 62% at 50% 54%,#000 42%,transparent 100%);animation:develop 3.6s .2s cubic-bezier(.3,.6,.2,1) both, drift 22s 0s ease-out both}
+@keyframes develop{from{filter:brightness(.04) contrast(1.2)}60%{filter:brightness(.7) contrast(1.08)}to{filter:brightness(1) contrast(1)}}
+@keyframes drift{from{transform:scale(1.06)}to{transform:scale(1)}}
+.sweep{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,226,170,.22) 48%,transparent 60%);mix-blend-mode:soft-light;transform:translateX(-70%);animation:sweep 3.4s 1.4s ease-in-out forwards;-webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 52%,#000 50%,transparent 90%);mask-image:radial-gradient(ellipse 60% 60% at 50% 52%,#000 50%,transparent 90%)}
+@keyframes sweep{to{transform:translateX(70%)}}
+.hero-photo figcaption{position:absolute;left:0;right:0;bottom:-6px;text-align:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(241,234,220,.34)}
+#hero .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--mute)}
+@media (max-width:900px){#hero{grid-template-columns:1fr;padding:90px 6vw 80px;gap:10px;text-align:center}.hero-copy{order:2;padding:0;margin:0 auto}.hero-copy .ctas{justify-content:center}.hero-copy p{margin-inline:auto}.hero-photo{order:1;width:100%}.hero-copy h1{margin-top:16px}}
+@media (prefers-reduced-motion:reduce){.hero-photo img,.sweep,.hero-copy *{animation:none!important;opacity:1!important}}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.gal figure{position:relative;margin:0;overflow:hidden;background:#0a0806}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1.1;transition:transform 2.4s cubic-bezier(.2,.7,.1,1)}
+.gal figure:hover img{transform:scale(1.035)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(transparent,rgba(5,5,5,.85));font-family:var(--serif);font-size:19px;letter-spacing:.04em;display:flex;align-items:baseline;gap:14px}
+.gal figcaption span{font-size:12px;letter-spacing:.3em;color:var(--gold)}
+.gal figcaption em{margin-left:auto;font-family:var(--sans);font-style:normal;font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(241,234,220,.45)}
+.g1{grid-column:span 7}.g2{grid-column:span 5}.g3,.g4,.g5{grid-column:span 4}.g6,.g7,.g8{grid-column:span 4}
+.g2 img{height:100%;aspect-ratio:auto}
+@media (max-width:860px){.gal{grid-template-columns:1fr 1fr;gap:8px}.gal figure{grid-column:span 1!important}.g1{grid-column:span 2!important}.gal figcaption{font-size:15px;padding:30px 12px 10px;flex-wrap:wrap;gap:6px}.gal figcaption em{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
@@ -329,21 +361,36 @@ footer small{display:block;margin-top:40px;font-size:9.5px;letter-spacing:.3em;t
 <div class="proto-tag">Creative Proposal I · Visual prototype</div>
 
 <main id="top">
-<!-- ============ HERO / SCROLL STAGE ============ -->
+<!-- ============ HERO — PHOTOGRAPHIC ============ -->
+<section id="hero" aria-label="The Jerusalem Creation">
+  <div class="hero-copy">
+    <div class="eyebrow">The Jerusalem Creation</div>
+    <h1>An Icon of Heritage.<br><em>Immortalized in Gold.</em></h1>
+    <p>An extraordinary architectural creation. Conceived as a timeless collectible.</p>
+    <div class="ctas">
+      <a class="btn solid" href="#gallery">Discover the Collection</a>
+      <a class="btn" href="#acquisition"><span class="ln"></span>Private Acquisition</a>
+    </div>
+  </div>
+  <figure class="hero-photo">
+    <img src="img/hero-front.jpg" alt="The Pendant in 18K gold: an octagonal domed building above a transparent chamber of sand, on dark marble" fetchpriority="high">
+    <span class="sweep" aria-hidden="true"></span>
+    <figcaption>Concept rendering · supplied reference · studio photography follows manufacture</figcaption>
+  </figure>
+  <div class="scrollcue"><i></i>Scroll</div>
+</section>
+
+<!-- ============ SCROLL STAGE ============ -->
 <section id="stage" aria-label="The creation">
   <div class="sticky">
     <canvas id="heroCanvas" aria-label="Three-dimensional visual prototype of the creation"></canvas>
     <div class="fallback" id="heroFallback">Your device cannot display the three-dimensional presentation. The creation is shown in photography in the final site.</div>
     <div class="vignette"></div><div class="grain"></div>
 
-    <div class="beat b0" data-beat="0">
-      <div class="eyebrow" style="margin-bottom:26px">The Jerusalem Creation</div>
-      <h1>An Icon of Heritage.<br><em>Immortalized in Gold.</em></h1>
-      <p>An extraordinary architectural creation. Conceived as a timeless collectible.</p>
-      <div class="ctas">
-        <a class="btn solid" href="#studio">Discover the Collection</a>
-        <a class="btn" href="#acquisition"><span class="ln"></span>Private Acquisition</a>
-      </div>
+    <div class="beat side l" data-beat="0">
+      <div class="num">I</div>
+      <h2>The Creation</h2>
+      <p>A complete building in miniature, crafted in 18K gold and resting on a transparent chamber of sand. Turn it, and it remains whole.</p>
     </div>
     <div class="beat side r" data-beat="1">
       <div class="num">II</div>
@@ -368,8 +415,7 @@ footer small{display:block;margin-top:40px;font-size:9.5px;letter-spacing:.3em;t
     </div>
 
     <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="scrollcue" id="cue"><i></i>Scroll</div>
-  </div>
+    </div>
 </section>
 
 <!-- ============ PROTOTYPE NOTICE ============ -->
@@ -379,8 +425,28 @@ footer small{display:block;margin-top:40px;font-size:9.5px;letter-spacing:.3em;t
       <div class="mark">i</div>
       <div>
         <div class="eyebrow" style="margin-bottom:12px">About this prototype</div>
-        <p><strong>The 3D object on this page is a procedural visual prototype</strong>, modelled by hand in code from the supplied reference boards so that the owner can approve proportions, materials and presentation. It is <strong>not an engineering model</strong> and not a substitute for CAD. Arch counts, ornament and gem settings are approximations awaiting approval. Both sizes use one identical geometry; the Grand Collector Edition is the same object, uniformly scaled. Dimensions, gold weight and gemstones shown are preliminary targets, not certified specifications.</p>
+        <p><strong>Nothing on this page is a photograph of a manufactured piece — that piece does not exist yet.</strong> The hero and the first two gallery views are the owner's supplied concept renderings. The 3D object is a <strong>visual prototype modelled in code</strong> from those references so that proportions, materials and presentation can be approved; it is not an engineering or CAD model. Both sizes use one identical geometry. Dimensions, gold weight and gemstones are preliminary targets, not certified specifications.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY — EIGHT VIEWS ============ -->
+<section class="block" id="gallery">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div><div class="eyebrow">The creation · eight views</div><h2>One object,<br>seen as it is.</h2></div>
+      <p>Every placement on the final site is reserved for photography of the finished creation. Until it exists, each view is filled honestly: supplied concept renderings where they show the design best, and renders of the 3D prototype where every view must show one identical geometry.</p>
+    </div>
+    <div class="gal">
+      <figure class="g1 reveal"><img src="img/01-front.jpg" alt="Front view" loading="lazy"><figcaption><span>01</span>Front<em>Concept rendering</em></figcaption></figure>
+      <figure class="g2 reveal"><img src="img/02-three-quarter.jpg" alt="Three-quarter view" loading="lazy"><figcaption><span>02</span>Three-quarter<em>Concept rendering</em></figcaption></figure>
+      <figure class="g3 reveal"><img src="img/03-rear.jpg" alt="Rear and side view" loading="lazy"><figcaption><span>03</span>Rear &amp; side<em>3D prototype render</em></figcaption></figure>
+      <figure class="g4 reveal"><img src="img/04-arcade.jpg" alt="Macro of the arcade, columns and enamel windows" loading="lazy"><figcaption><span>04</span>The arcade, macro<em>3D prototype render</em></figcaption></figure>
+      <figure class="g5 reveal"><img src="img/05-dome.jpg" alt="Gold dome close-up" loading="lazy"><figcaption><span>05</span>The gold dome<em>3D prototype render</em></figcaption></figure>
+      <figure class="g6 reveal"><img src="img/06-sand.jpg" alt="Transparent sand chamber" loading="lazy"><figcaption><span>06</span>The sand chamber<em>3D prototype render</em></figcaption></figure>
+      <figure class="g7 reveal"><img src="img/07-necklace.jpg" alt="The pendant on its chain" loading="lazy"><figcaption><span>07</span>On the chain<em>3D prototype render</em></figcaption></figure>
+      <figure class="g8 reveal"><img src="img/08-grand.jpg" alt="Grand Collector Edition under its glass cloche" loading="lazy"><figcaption><span>08</span>Grand Collector Edition<em>3D prototype render</em></figcaption></figure>
     </div>
   </div>
 </section>
@@ -597,523 +663,16 @@ footer small{display:block;margin-top:40px;font-size:9.5px;letter-spacing:.3em;t
   "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
 }}
 </script>
-<script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-
-const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const MOBILE = matchMedia('(max-width: 760px)').matches;
-const TAU = Math.PI*2;
-
-/* ---------------------------------------------------------------
-   Procedural textures (canvas) — sand, enamel with gold inlay, marble
----------------------------------------------------------------- */
-function rng(seed){ let s=seed>>>0; return ()=>{ s=(s*1664525+1013904223)>>>0; return s/4294967296; }; }
-function canvasTex(w,h,draw,color=true){
-  const c=document.createElement('canvas'); c.width=w; c.height=h;
-  draw(c.getContext('2d'),w,h);
-  const t=new THREE.CanvasTexture(c); if(color) t.colorSpace=THREE.SRGBColorSpace;
-  t.anisotropy=8; return t;
-}
-function sandDraw(ctx,w,h){
-  const r=rng(7); ctx.fillStyle='#a8824e'; ctx.fillRect(0,0,w,h);
-  const tones=['#6e512c','#8f6c3f','#b48c55','#cfa96f','#e2c48e','#f4e2bb','#5a4126'];
-  for(let i=0;i<w*h*0.05;i++){
-    const x=r()*w, y=r()*h, rad=.8+r()*r()*3.2;
-    ctx.fillStyle=tones[Math.floor(r()*tones.length)]; ctx.globalAlpha=.6+r()*.4;
-    ctx.beginPath(); ctx.ellipse(x,y,rad,rad*(.6+r()*.4),r()*3,0,TAU); ctx.fill();
-  }
-  ctx.globalAlpha=1;
-}
-function bandDraw(arches, gold){ // enamel band with inlaid gold — color or metalness mask
-  return (ctx,w,h)=>{
-    if(gold){ ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h); }
-    else{
-      const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'#0c1f5c'); g.addColorStop(.5,'#1b3a92'); g.addColorStop(1,'#0c1f5c');
-      ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
-      const r=rng(3); for(let i=0;i<1400;i++){ctx.fillStyle=`rgba(${r()<.5?'90,130,230':'5,15,50'},${r()*.18})`;ctx.fillRect(r()*w,r()*h,2,2);}
-    }
-    const G = gold?'#fff':'#e5bd6c';
-    ctx.strokeStyle=G; ctx.fillStyle=G;
-    ctx.lineWidth=h*0.045; ctx.strokeRect(0,ctx.lineWidth/2,w,h-ctx.lineWidth);
-    const n=arches, bay=w/n;
-    for(let k=0;k<n;k++){
-      const cx=bay*(k+.5), aw=bay*.56, top=h*.2, base=h*.86, rr=aw/2;
-      ctx.lineWidth=h*0.035;
-      ctx.beginPath(); ctx.moveTo(cx-rr,base); ctx.lineTo(cx-rr,top+rr); ctx.arc(cx,top+rr,rr,Math.PI,0); ctx.lineTo(cx+rr,base); ctx.stroke();
-      // eight-point star inside
-      const sy=top+rr+ (base-top-rr)*.35, s=aw*.18;
-      ctx.beginPath(); for(let j=0;j<16;j++){ const a=j*Math.PI/8, rad=j%2?s*.45:s; ctx.lineTo(cx+Math.sin(a)*rad, sy-Math.cos(a)*rad);} ctx.closePath(); ctx.fill();
-      // lozenge between arches
-      const lx=bay*(k+1), ly=h*.52, ls=h*.09;
-      if(k<n-1){ ctx.beginPath(); ctx.moveTo(lx,ly-ls); ctx.lineTo(lx+ls*.6,ly); ctx.lineTo(lx,ly+ls); ctx.lineTo(lx-ls*.6,ly); ctx.closePath(); ctx.fill(); }
-    }
-  };
-}
-function drumDraw(gold){
-  return (ctx,w,h)=>{
-    if(gold){ ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);} else {
-      const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'#0b1d58'); g.addColorStop(.5,'#1a3890'); g.addColorStop(1,'#0b1d58'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
-    }
-    const G=gold?'#fff':'#e5bd6c'; ctx.fillStyle=G; ctx.strokeStyle=G;
-    ctx.lineWidth=h*.05; ctx.strokeRect(0,ctx.lineWidth/2,w,h-ctx.lineWidth);
-    const n=32; // lozenge chain, windows sit on even slots
-    for(let k=0;k<n;k++){ if(k%2===0) continue; const x=(k+.5)*w/n, y=h*.5, s=h*.16;
-      ctx.beginPath(); ctx.moveTo(x,y-s); ctx.lineTo(x+s*.55,y); ctx.lineTo(x,y+s); ctx.lineTo(x-s*.55,y); ctx.closePath(); ctx.fill();
-      ctx.beginPath(); ctx.arc(x,y-s*1.6,h*.025,0,TAU); ctx.arc(x,y+s*1.6,h*.025,0,TAU); ctx.fill(); }
-  };
-}
-function marbleDraw(ctx,w,h){
-  ctx.fillStyle='#0a0a0b'; ctx.fillRect(0,0,w,h);
-  const r=rng(11);
-  for(let v=0;v<26;v++){
-    let x=r()*w, y=r()*h, a=r()*TAU; ctx.beginPath(); ctx.moveTo(x,y);
-    const len=200+r()*700;
-    for(let i=0;i<len;i+=6){ a+= (r()-.5)*.35; x+=Math.cos(a)*6; y+=Math.sin(a)*6; ctx.lineTo(x,y); }
-    ctx.strokeStyle = v%5===0?`rgba(214,186,130,${.18+r()*.2})`:`rgba(230,225,215,${.04+r()*.1})`;
-    ctx.lineWidth=.6+r()*1.6; ctx.stroke();
-  }
-}
-function plaqueDraw(ctx,w,h){
-  ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);
-  ctx.fillStyle='#fff'; ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.font='300 '+h*.36+'px "Cormorant Garamond", Georgia, serif';
-  const word='I L I Y A'; ctx.fillText(word,w/2,h*.42);
-  ctx.font='400 '+h*.11+'px Manrope, sans-serif'; ctx.fillText('G R A N D   C O L L E C T O R   E D I T I O N',w/2,h*.76);
-}
-
-/* ---------------------------------------------------------------
-   Materials
----------------------------------------------------------------- */
-function makeMaterials(){
-  const sandMap=canvasTex(512,512,sandDraw); sandMap.wrapS=sandMap.wrapT=THREE.RepeatWrapping; sandMap.repeat.set(3.2,.8);
-  const sandTop=canvasTex(512,512,sandDraw); sandTop.wrapS=sandTop.wrapT=THREE.RepeatWrapping; sandTop.repeat.set(2.5,2.5);
-  const bandC=canvasTex(1024,256,bandDraw(5,false)), bandM=canvasTex(1024,256,bandDraw(5,true),false);
-  const drumC=canvasTex(2048,256,drumDraw(false)), drumM=canvasTex(2048,256,drumDraw(true),false);
-  const marble=canvasTex(1024,1024,marbleDraw); marble.wrapS=marble.wrapT=THREE.RepeatWrapping;
-  const enamelProps={metalness:0, roughness:.18, clearcoat:1, clearcoatRoughness:.04, envMapIntensity:1.1};
-  return {
-    gold:   new THREE.MeshPhysicalMaterial({color:0xf0c060, metalness:1, roughness:.17, envMapIntensity:1.25}),
-    goldSatin:new THREE.MeshPhysicalMaterial({color:0xe6b45a, metalness:1, roughness:.3, envMapIntensity:1.15}),
-    goldDeep:new THREE.MeshPhysicalMaterial({color:0xc99a48, metalness:1, roughness:.38, envMapIntensity:.9}),
-    recess: new THREE.MeshStandardMaterial({color:0x080605, roughness:.85, metalness:.2}),
-    door:   new THREE.MeshStandardMaterial({color:0x3a120b, roughness:.55, metalness:.3}),
-    band:   new THREE.MeshPhysicalMaterial({...enamelProps, map:bandC, metalnessMap:bandM}),
-    drum:   new THREE.MeshPhysicalMaterial({...enamelProps, map:drumC, metalnessMap:drumM}),
-    enamel: new THREE.MeshPhysicalMaterial({...enamelProps, color:0x1a3790}),
-    glass:  new THREE.MeshPhysicalMaterial({color:0xfffaf0, metalness:0, roughness:0, transmission:1, thickness:.12, ior:1.52, specularIntensity:1, envMapIntensity:1.1, clearcoat:1, clearcoatRoughness:0, side:THREE.DoubleSide, transparent:true}),
-    cloche: new THREE.MeshPhysicalMaterial({color:0xffffff, metalness:0, roughness:.02, transmission:1, thickness:.05, ior:1.5, envMapIntensity:1.6, transparent:true, opacity:1, side:THREE.DoubleSide, depthWrite:false}),
-    sand:   new THREE.MeshStandardMaterial({map:sandMap, bumpMap:sandMap, bumpScale:2.2, roughness:.95, metalness:0, emissive:0x1c1006, emissiveIntensity:.6}),
-    sandTop:new THREE.MeshStandardMaterial({map:sandTop, bumpMap:sandTop, bumpScale:.8, roughness:1, metalness:0}),
-    diamond:new THREE.MeshPhysicalMaterial({color:0xffffff, metalness:0, roughness:0, ior:2.42, reflectivity:1, specularIntensity:1, envMapIntensity:3.2, flatShading:true, iridescence:.35, iridescenceIOR:1.6}),
-    marble: new THREE.MeshPhysicalMaterial({map:marble, roughness:.12, metalness:0, clearcoat:1, clearcoatRoughness:.05, envMapIntensity:.7}),
-    plaque: new THREE.MeshPhysicalMaterial({color:0xe9be6a, metalness:1, roughness:.25, roughnessMap:null}),
-    plaqueTex: canvasTex(1024,256,plaqueDraw,false),
-  };
-}
-
-/* ---------------------------------------------------------------
-   Geometry helpers
----------------------------------------------------------------- */
-function archPath(Cls,cx,y0,w,spring){ const r=w/2, p=new Cls(); p.moveTo(cx-r,y0); p.lineTo(cx+r,y0); p.lineTo(cx+r,spring); p.absarc(cx,spring,r,0,Math.PI,false); p.lineTo(cx-r,y0); return p; }
-function archFrame(cx,y0,w,spring,t){ const R0=w/2, R1=R0+t, s=new THREE.Shape();
-  s.moveTo(cx-R1,y0); s.lineTo(cx-R1,spring); s.absarc(cx,spring,R1,Math.PI,0,true); s.lineTo(cx+R1,y0); s.lineTo(cx+R0,y0); s.lineTo(cx+R0,spring); s.absarc(cx,spring,R0,0,Math.PI,false); s.lineTo(cx-R0,y0); return s; }
-function brilliant(){ // faceted round brilliant, unit diameter
-  const pts=[new THREE.Vector2(0,-.43),new THREE.Vector2(.5,0),new THREE.Vector2(.5,.03),new THREE.Vector2(.3,.16),new THREE.Vector2(0,.16)];
-  const g=new THREE.LatheGeometry(pts,8); g.computeVertexNormals(); return g;
-}
-const DIAMOND_GEO = brilliant();
-function instanced(geo,mat,mats){ const m=new THREE.InstancedMesh(geo,mat,mats.length); mats.forEach((mx,i)=>m.setMatrixAt(i,mx)); m.instanceMatrix.needsUpdate=true; return m; }
-const _o=new THREE.Object3D();
-function M(px,py,pz,rx=0,ry=0,rz=0,s=1){ _o.position.set(px,py,pz); _o.rotation.set(rx,ry,rz); _o.scale.setScalar(s); _o.updateMatrix(); return _o.matrix.clone(); }
-function columnGeo(h){ const shaft=new THREE.CylinderGeometry(.021,.024,h,12); shaft.translate(0,h/2,0);
-  const cap=new THREE.BoxGeometry(.07,.028,.07); cap.translate(0,h+.014,0);
-  const cap2=new THREE.CylinderGeometry(.032,.024,.03,12); cap2.translate(0,h-.012,0);
-  const base=new THREE.BoxGeometry(.064,.022,.064); base.translate(0,.011,0);
-  return mergeGeometries([shaft,cap,cap2,base]); }
-
-/* ---------------------------------------------------------------
-   THE CREATION — one geometry for both sizes
-   Units: 1 unit = 10 mm at pendant scale.
----------------------------------------------------------------- */
-function buildCreation(m,{bail=true}={}){
-  const root=new THREE.Group(); root.name='creation';
-  const R=2.0, A=R*Math.cos(Math.PI/8), W=2*R*Math.sin(Math.PI/8);
-  const octRot=Math.PI/8;
-  const diamonds=[];
-  let y=0;
-
-  // — base ring
-  const base1=new THREE.Mesh(new THREE.CylinderGeometry(1.98,2.02,.1,96),m.gold); base1.position.y=.05; root.add(base1);
-  const base2=new THREE.Mesh(new THREE.TorusGeometry(1.93,.045,12,120),m.gold); base2.rotation.x=Math.PI/2; base2.position.y=.13; root.add(base2);
-  y=.14;
-  // — sand chamber
-  const chH=.92, chR=1.86;
-  const glass=new THREE.Mesh(new THREE.CylinderGeometry(chR,chR,chH,128,1,true),m.glass); glass.position.y=y+chH/2; glass.renderOrder=2; root.add(glass);
-  const sandH=.58;
-  const sand=new THREE.Mesh(new THREE.CylinderGeometry(chR-.05,chR-.05,sandH,128,1,true),m.sand); sand.position.y=y+sandH/2; root.add(sand);
-  const st=new THREE.RingGeometry(.001,chR-.05,128,22); const p=st.attributes.position; const rr=rng(5);
-  for(let i=0;i<p.count;i++){ const x=p.getX(i), z=p.getY(i), d=Math.hypot(x,z)/(chR-.05);
-    p.setZ(i, (1-d*d)*.07 + Math.sin(x*3.1)*Math.cos(z*2.7)*.025 + (rr()-.5)*.012); }
-  st.computeVertexNormals(); const sandTop=new THREE.Mesh(st,m.sandTop); sandTop.rotation.x=-Math.PI/2; sandTop.position.y=y+sandH; root.add(sandTop);
-  const floor=new THREE.Mesh(new THREE.CircleGeometry(chR,64),m.goldDeep); floor.rotation.x=-Math.PI/2; floor.position.y=y+.002; root.add(floor);
-  y+=chH;
-  // — upper chamber ring with diamond row
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(chR+.02,.055,14,140),m.gold); ring.rotation.x=Math.PI/2; ring.position.y=y; root.add(ring);
-  for(let i=0;i<72;i++){ const a=i/72*TAU; diamonds.push(M(Math.sin(a)*(chR+.07),y,Math.cos(a)*(chR+.07),Math.PI/2,0,-a,.062)); }
-  for(let i=0;i<72;i++){ const a=(i+.5)/72*TAU; diamonds.push(M(Math.sin(a)*(chR+.07),.14-.02,Math.cos(a)*(chR+.07),Math.PI/2,0,-a,.055)); }
-  // — octagonal plinth
-  const plH=.14; const plinth=new THREE.Mesh(new THREE.CylinderGeometry(R*1.035,R*.99,plH,8),m.gold); plinth.rotation.y=octRot; plinth.position.y=y+.03+plH/2; root.add(plinth);
-  y+=.03+plH;
-
-  // — ARCADE (8 faces, complete in 360°)
-  const H=1.16, y0=.06, n=5, bay=W/n, aw=bay*.58, spring=.55;
-  const core=new THREE.Mesh(new THREE.CylinderGeometry(R*.9,R*.9,H,8),m.recess); core.rotation.y=octRot; core.position.y=y+H/2; root.add(core);
-  const faceShape=new THREE.Shape(); faceShape.moveTo(-W/2,0); faceShape.lineTo(W/2,0); faceShape.lineTo(W/2,H); faceShape.lineTo(-W/2,H); faceShape.lineTo(-W/2,0);
-  for(let k=0;k<n;k++) faceShape.holes.push(archPath(THREE.Path,-W/2+bay*(k+.5),y0,aw,spring));
-  const faceGeo=new THREE.ExtrudeGeometry(faceShape,{depth:.05,bevelEnabled:true,bevelThickness:.006,bevelSize:.005,bevelSegments:1,curveSegments:12});
-  const frames=[]; for(let k=0;k<n;k++) frames.push(archFrame(-W/2+bay*(k+.5),y0,aw,spring,.022));
-  const frameGeo=new THREE.ExtrudeGeometry(frames,{depth:.022,bevelEnabled:false,curveSegments:12});
-  const doorGeo=new THREE.ShapeGeometry(archPath(THREE.Shape,0,y0,aw,spring),12);
-  const bandGeo=new THREE.PlaneGeometry(W*.985,.33);
-  const courseGeo=new THREE.BoxGeometry(W,.032,.04);
-  const friezeGeo=new THREE.BoxGeometry(W,.06,.035);
-  const colG=columnGeo(spring-y0-.02);
-  const colMats=[];
-  for(let i=0;i<8;i++){
-    const a=i*Math.PI/4; const face=new THREE.Group(); face.rotation.y=a; face.position.y=y; root.add(face);
-    const panel=new THREE.Mesh(faceGeo,m.goldSatin); panel.position.z=A-.03; face.add(panel);
-    const fr=new THREE.Mesh(frameGeo,m.gold); fr.position.z=A+.026; face.add(fr);
-    if(i%2===0){ const d=new THREE.Mesh(doorGeo,m.door); d.position.set(0,0,A-.02); face.add(d); }
-    const course=new THREE.Mesh(courseGeo,m.gold); course.position.set(0,spring+aw/2+.06,A+.035); face.add(course);
-    const band=new THREE.Mesh(bandGeo,m.band); band.position.set(0,.88,A+.031); face.add(band);
-    const frieze=new THREE.Mesh(friezeGeo,m.gold); frieze.position.set(0,H-.035,A+.03); face.add(frieze);
-    for(let k=1;k<n;k++){ const x=-W/2+bay*k; const v=new THREE.Vector3(x,y0+y,A+.07).applyAxisAngle(new THREE.Vector3(0,1,0),a); colMats.push(M(v.x,v.y,v.z,0,a,0)); }
-    // diamonds on string course
-    for(let k=0;k<11;k++){ const x=-W/2+.07+(W-.14)*k/10; const v=new THREE.Vector3(x,y+spring+aw/2+.06,A+.058).applyAxisAngle(new THREE.Vector3(0,1,0),a); diamonds.push(M(v.x,v.y,v.z,Math.PI/2,0,0,.03).premultiply(new THREE.Matrix4().makeRotationY(0))); }
-  }
-  // fix diamond orientation for course (face outward)
-  root.add(instanced(colG,m.gold,colMats));
-  // corner pilasters with diamond studs
-  const pilG=new THREE.BoxGeometry(.11,H+.02,.11);
-  for(let i=0;i<8;i++){ const a=i*Math.PI/4+Math.PI/8, rx=Math.sin(a)*(R+.005), rz=Math.cos(a)*(R+.005);
-    const pil=new THREE.Mesh(pilG,m.gold); pil.position.set(rx,y+H/2,rz); pil.rotation.y=a; root.add(pil);
-    for(let j=0;j<4;j++){ const v=new THREE.Vector3(0,y+.18+j*.27,R+.065).applyAxisAngle(new THREE.Vector3(0,1,0),a); diamonds.push(M(v.x,v.y,v.z,-Math.PI/2,0,0,.05).premultiply(new THREE.Matrix4())); }
-  }
-  y+=H;
-  // cornice + diamond line
-  const corn=new THREE.Mesh(new THREE.CylinderGeometry(R*1.06,R*1.02,.09,8),m.gold); corn.rotation.y=octRot; corn.position.y=y+.045; root.add(corn);
-  const corR=R*1.06;
-  for(let i=0;i<8;i++){ const a0=i*Math.PI/4-Math.PI/8, a1=a0+Math.PI/4; const p0=new THREE.Vector3(Math.sin(a0)*corR,0,Math.cos(a0)*corR), p1=new THREE.Vector3(Math.sin(a1)*corR,0,Math.cos(a1)*corR);
-    for(let k=0;k<12;k++){ const t=(k+.5)/12; const v=p0.clone().lerp(p1,t); diamonds.push(M(v.x*1.0,y+.095,v.z*1.0,0,0,0,.045)); } }
-  y+=.09;
-  // roof transition
-  const roof=new THREE.Mesh(new THREE.CylinderGeometry(1.38,R*1.0,.16,8),m.goldSatin); roof.rotation.y=octRot; roof.position.y=y+.08; root.add(roof);
-  y+=.16;
-
-  // — DRUM
-  const dR=1.3, dH=.5;
-  const drum=new THREE.Mesh(new THREE.CylinderGeometry(dR,dR,dH,96),m.gold); drum.position.y=y+dH/2; root.add(drum);
-  const dband=new THREE.Mesh(new THREE.CylinderGeometry(dR+.006,dR+.006,dH*.72,128,1,true),m.drum); dband.position.y=y+dH/2; root.add(dband);
-  const winG=new THREE.ShapeGeometry(archPath(THREE.Shape,0,-.11,.11,.04),10);
-  const winF=new THREE.ExtrudeGeometry(archFrame(0,-.11,.11,.04,.016),{depth:.02,bevelEnabled:false,curveSegments:10});
-  for(let k=0;k<16;k++){ const a=k/16*TAU;
-    const w=new THREE.Mesh(winG,m.recess); w.position.set(Math.sin(a)*(dR+.012),y+dH/2,Math.cos(a)*(dR+.012)); w.rotation.y=a; root.add(w);
-    const f=new THREE.Mesh(winF,m.gold); f.position.set(Math.sin(a)*(dR+.008),y+dH/2,Math.cos(a)*(dR+.008)); f.rotation.y=a; root.add(f); }
-  const tr1=new THREE.Mesh(new THREE.TorusGeometry(dR+.02,.028,10,120),m.gold); tr1.rotation.x=Math.PI/2; tr1.position.y=y+.02; root.add(tr1);
-  y+=dH;
-  const tr2=new THREE.Mesh(new THREE.TorusGeometry(dR+.03,.04,12,120),m.gold); tr2.rotation.x=Math.PI/2; tr2.position.y=y; root.add(tr2);
-  for(let i=0;i<56;i++){ const a=i/56*TAU; diamonds.push(M(Math.sin(a)*(dR+.07),y+.005,Math.cos(a)*(dR+.07),Math.PI/2,0,-a,.05)); }
-  y+=.03;
-
-  // — DOME: lathe profile, meridians and rings form the gold grid
-  const domeR=1.27, domeH=1.12, prof=[], N=56;
-  const domeP=t=>{ const th=t*Math.PI/2; const r=domeR*(1+.07*Math.sin(th*2))*Math.cos(th)**.92; const yy=domeH*Math.sin(th)+ (t>.92? (t-.92)*1.1 : 0); return new THREE.Vector2(Math.max(r,0.0001),yy); };
-  for(let i=0;i<=N;i++) prof.push(domeP(i/N));
-  const dome=new THREE.Mesh(new THREE.LatheGeometry(prof,128),m.goldSatin); dome.position.y=y; root.add(dome);
-  const ribs=[];
-  for(let k=0;k<32;k++){ const a=k/32*TAU; const pts=[];
-    for(let i=0;i<=40;i++){ const t=i/40*.97; const v=domeP(t); pts.push(new THREE.Vector3(Math.sin(a)*(v.x+.012),v.y+.004,Math.cos(a)*(v.x+.012))); }
-    ribs.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),40,.011,5,false)); }
-  for(const t of [.12,.26,.4,.54,.67,.79]){ const v=domeP(t); const tor=new THREE.TorusGeometry(v.x+.008,.011,6,128); tor.rotateX(Math.PI/2); tor.translate(0,v.y,0); ribs.push(tor); }
-  const grid=new THREE.Mesh(mergeGeometries(ribs),m.gold); grid.position.y=y; root.add(grid);
-  const apex=domeP(1).y; y+=apex;
-  // finial
-  const fin1=new THREE.Mesh(new THREE.SphereGeometry(.07,24,16),m.gold); fin1.position.y=y+.03; root.add(fin1);
-  const fin2=new THREE.Mesh(new THREE.CylinderGeometry(.018,.03,.16,16),m.gold); fin2.position.y=y+.15; root.add(fin2);
-  const fin3=new THREE.Mesh(new THREE.SphereGeometry(.035,16,12),m.gold); fin3.position.y=y+.25; root.add(fin3);
-  y+=.28;
-
-  const dm=instanced(DIAMOND_GEO,m.diamond,diamonds); root.add(dm);
-  root.userData.top=y;
-
-  // — bail (pendant only)
-  if(bail){
-    const bg=new THREE.Group(); bg.name='bail'; bg.position.y=y;
-    const tongue=new THREE.Mesh(new THREE.CylinderGeometry(.11,.07,.52,24),m.gold); tongue.scale.z=.6; tongue.position.y=.26; bg.add(tongue);
-    const bd=[]; for(let j=0;j<4;j++) bd.push(M(0,.1+j*.11,.07,-Math.PI/2,0,0,.085-j*.006));
-    bg.add(instanced(DIAMOND_GEO,m.diamond,bd));
-    const loop=new THREE.Mesh(new THREE.TorusGeometry(.2,.055,16,48),m.gold); loop.position.y=.66; loop.rotation.y=Math.PI/2; bg.add(loop);
-    root.add(bg); root.userData.bailTop=y+.86;
-  }
-  // normalise: 45 mm wide = 4.5 units
-  const box=new THREE.Box3().setFromObject(root); const size=box.getSize(new THREE.Vector3());
-  root.userData.scale=4.5/Math.max(size.x,size.z);
-  return root;
-}
-
-function buildChain(m, from, links=46){
-  const g=new THREE.Group(); const linkGeo=new THREE.TorusGeometry(.14,.036,10,28); linkGeo.scale(1.45,1,1);
-  const mats=[], stations=[], dmats=[];
-  for(const side of [-1,1]){
-    const dir=new THREE.Vector3(side*Math.sin(.2),Math.cos(.2),0);
-    for(let i=0;i<links;i++){
-      const p=from.clone().addScaledVector(dir,.12+i*.3);
-      const rotZ=Math.PI/2 - side*.2;
-      if(i>0 && i%9===0){ stations.push(M(p.x,p.y,p.z,0,0,rotZ)); dmats.push(M(p.x,p.y,p.z+.05,-Math.PI/2,0,0,.11)); continue; }
-      mats.push(M(p.x,p.y,p.z, i%2?Math.PI/2:0, 0, rotZ).multiply(new THREE.Matrix4().makeRotationX(i%2?Math.PI/2:0)));
-    }
-  }
-  g.add(instanced(linkGeo,m.gold,mats));
-  const st=new THREE.CylinderGeometry(.09,.09,.14,24); st.rotateX(Math.PI/2);
-  g.add(instanced(st,m.gold,stations)); g.add(instanced(DIAMOND_GEO,m.diamond,dmats));
-  return g;
-}
-
-function buildDisplay(m, s){ // Grand Collector presentation — plinth + cloche; the object itself is unchanged
-  const g=new THREE.Group();
-  const pR=7.6, pH=2.4;
-  const plinth=new THREE.Mesh(new THREE.CylinderGeometry(pR,pR*1.04,pH,8),m.marble); plinth.rotation.y=Math.PI/8; plinth.position.y=-pH/2; g.add(plinth);
-  const lip=new THREE.Mesh(new THREE.CylinderGeometry(pR*1.01,pR*1.01,.08,8),m.gold); lip.rotation.y=Math.PI/8; lip.position.y=-.04; g.add(lip);
-  const foot=new THREE.Mesh(new THREE.CylinderGeometry(pR*1.08,pR*1.1,.22,8),m.marble); foot.rotation.y=Math.PI/8; foot.position.y=-pH-.11; g.add(foot);
-  const footLip=new THREE.Mesh(new THREE.CylinderGeometry(pR*1.045,pR*1.045,.05,8),m.gold); footLip.rotation.y=Math.PI/8; footLip.position.y=-pH+.0; g.add(footLip);
-  const disc=new THREE.Mesh(new THREE.CylinderGeometry(6.4,6.5,.18,96),m.goldDeep); disc.position.y=.09; g.add(disc);
-  const plq=new THREE.Mesh(new THREE.PlaneGeometry(4.4,1.1),new THREE.MeshPhysicalMaterial({color:0xe2b766,metalness:1,roughness:.32,roughnessMap:null, bumpMap:m.plaqueTex, bumpScale:2.5, metalnessMap:null}));
-  const Ap=pR*Math.cos(Math.PI/8); plq.position.set(0,-pH/2,Ap*1.003+.01); g.add(plq);
-  // cloche
-  const cr=6.75, ch=10.5; const pts=[];
-  pts.push(new THREE.Vector2(cr,0)); pts.push(new THREE.Vector2(cr,ch));
-  for(let i=1;i<=24;i++){ const a=i/24*Math.PI/2; pts.push(new THREE.Vector2(Math.cos(a)*cr, ch+Math.sin(a)*cr*.85)); }
-  const cloche=new THREE.Mesh(new THREE.LatheGeometry(pts,96),m.cloche); cloche.position.y=.18; cloche.renderOrder=5; cloche.name='cloche'; g.add(cloche);
-  const cring=new THREE.Mesh(new THREE.TorusGeometry(cr+.02,.08,12,128),m.gold); cring.rotation.x=Math.PI/2; cring.position.y=.2; g.add(cring);
-  return g;
-}
-
-/* ---------------------------------------------------------------
-   Studio environment — dark room with warm softboxes, for reflections
----------------------------------------------------------------- */
-function makeEnv(renderer, mood='gallery'){
-  const s=new THREE.Scene(); s.background=new THREE.Color(0x030303);
-  const panel=(w,h,col,k,pos)=>{ const mesh=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(col).multiplyScalar(k),side:THREE.DoubleSide})); mesh.position.set(...pos); mesh.lookAt(0,0,0); s.add(mesh); };
-  if(mood==='gallery'){
-    panel(10,3,0xffe2b0,5,[0,9,3]); panel(1.4,12,0xfff3dc,4.2,[-9,1,3]); panel(1.4,12,0xffe0b4,3,[9,2,-2]);
-    panel(8,1.2,0xffffff,2,[0,3,-10]); panel(12,1,0x8fa6ff,.7,[0,-3,9]); panel(20,20,0x24180c,1,[0,-10,0]);
-    panel(3,3,0xffffff,3,[-5,5,8]);
-  } else {
-    panel(14,4,0xff9a50,3.6,[-8,2,6]); panel(10,2,0x6a86ff,1.4,[8,6,-4]); panel(2,10,0xffd9a8,2.4,[6,0,8]);
-    panel(20,20,0x1a0f08,1,[0,-10,0]); panel(6,1,0xffc890,3,[0,9,0]);
-  }
-  const pm=new THREE.PMREMGenerator(renderer); const t=pm.fromScene(s,.035).texture; pm.dispose(); return t;
-}
-
-function glowTexture(inner='rgba(255,214,150,0.55)'){
-  return canvasTex(256,256,(c,w,h)=>{ const g=c.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2); g.addColorStop(0,inner); g.addColorStop(.4,'rgba(200,140,70,0.12)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,w,h); });
-}
-function shadowTexture(){ return canvasTex(256,256,(c,w,h)=>{ const g=c.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2); g.addColorStop(0,'rgba(0,0,0,0.85)'); g.addColorStop(.6,'rgba(0,0,0,0.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,w,h); }); }
-
-function makeRenderer(canvas){
-  let r; try{ r=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'}); }catch(e){ return null; }
-  r.setPixelRatio(Math.min(devicePixelRatio, MOBILE?1.6:2));
-  r.toneMapping=THREE.ACESFilmicToneMapping; r.toneMappingExposure=1.05; r.setClearColor(0x000000,0);
-  return r;
-}
-function lights(scene){
-  const key=new THREE.SpotLight(0xffd6a0,0,0,.42,.8,0); key.position.set(3,14,6); scene.add(key); scene.add(key.target);
-  const rim=new THREE.DirectionalLight(0x8ea8ff,0); rim.position.set(-6,4,-8); scene.add(rim);
-  const fill=new THREE.DirectionalLight(0xffe6c4,0); fill.position.set(-4,2,8); scene.add(fill);
-  const amb=new THREE.HemisphereLight(0x332a20,0x050403,0); scene.add(amb);
-  return {key,rim,fill,amb};
-}
-
-/* ---------------------------------------------------------------
-   HERO — cinematic, scroll-driven
----------------------------------------------------------------- */
-const heroCanvas=document.getElementById('heroCanvas');
-const heroR=makeRenderer(heroCanvas);
-let heroState=null;
-if(!heroR){ document.getElementById('heroFallback').style.display='flex'; }
-else {
-  const mats=makeMaterials();
-  const scene=new THREE.Scene(); scene.environment=makeEnv(heroR,'gallery');
-  const cam=new THREE.PerspectiveCamera(30,1,.1,200);
-  const L=lights(scene);
-  const piece=new THREE.Group(); scene.add(piece);
-  const creation=buildCreation(mats,{bail:true}); const s=creation.userData.scale; creation.scale.setScalar(s); piece.add(creation);
-  const chain=buildChain(mats,new THREE.Vector3(0,creation.userData.bailTop-.12,0)); chain.scale.setScalar(s); piece.add(chain);
-  // light pool + soft shadow
-  const pool=new THREE.Mesh(new THREE.PlaneGeometry(14,14),new THREE.MeshBasicMaterial({map:glowTexture(),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
-  pool.rotation.x=-Math.PI/2; pool.position.y=-.02; scene.add(pool);
-  const sh=new THREE.Mesh(new THREE.PlaneGeometry(6.5,6.5),new THREE.MeshBasicMaterial({map:shadowTexture(),transparent:true,depthWrite:false})); sh.rotation.x=-Math.PI/2; sh.position.y=-.01; scene.add(sh);
-  // light shaft
-  const beamMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,uniforms:{uI:{value:0}},
-    vertexShader:`varying vec2 vUv; varying vec3 vN; varying vec3 vV; void main(){ vUv=uv; vec4 mv=modelViewMatrix*vec4(position,1.); vN=normalize(normalMatrix*normal); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }`,
-    fragmentShader:`uniform float uI; varying vec2 vUv; varying vec3 vN; varying vec3 vV; void main(){ float f=pow(abs(dot(vN,vV)),2.2); float a=pow(vUv.y,1.6)*f*uI*.11; gl_FragColor=vec4(1.,.82,.55,a); }`});
-  const beam=new THREE.Mesh(new THREE.CylinderGeometry(.35,4.2,16,48,1,true),beamMat); beam.position.y=8; scene.add(beam);
-  // dust in the light
-  const dustN=MOBILE?160:360, dp=new Float32Array(dustN*3), rr=rng(9);
-  for(let i=0;i<dustN;i++){ const a=rr()*TAU, r=Math.sqrt(rr())*3.2; dp[i*3]=Math.cos(a)*r; dp[i*3+1]=rr()*10; dp[i*3+2]=Math.sin(a)*r; }
-  const dg=new THREE.BufferGeometry(); dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
-  const dust=new THREE.Points(dg,new THREE.PointsMaterial({size:.035,map:glowTexture('rgba(255,230,190,1)'),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:0,color:0xffe1b0}));
-  scene.add(dust);
-
-  // camera beats: azimuth, elevation, distance, target height
-  const BEATS=[
-    {az:.0,  el:.08, d:20, ty:.55},
-    {az:.62, el:.03, d:6.4,  ty:1.95},
-    {az:-.42,el:.62, d:6.2,  ty:3.9},
-    {az:.3,  el:-.06,d:5.6,  ty:.75},
-    {az:.0,  el:.12, d:19, ty:.7},
-  ];
-  heroState={scene,cam,L,piece,beamMat,dust,BEATS,p:0,cur:{az:0,el:.08,d:20,ty:.55},t0:performance.now(),visible:true};
-}
-
-const beats=[...document.querySelectorAll('.beat')], progEls=[...document.querySelectorAll('.progress span')];
-const stage=document.getElementById('stage'), cue=document.getElementById('cue'), hdr=document.getElementById('hdr');
-function stageProgress(){ const r=stage.getBoundingClientRect(); const total=r.height-innerHeight; return Math.min(1,Math.max(0,-r.top/total)); }
-const ss=t=>t*t*(3-2*t);
-function updateBeats(p, intro){
-  const seg=p*4; // 0..4
-  beats.forEach((el,i)=>{
-    let o=1-Math.min(1,Math.abs(seg-i)/.42); o=Math.max(0,o); o=ss(o);
-    if(i===0) o = (seg<.42? 1-ss(Math.min(1,seg/.42)) : 0) * intro;
-    el.style.opacity=o.toFixed(3);
-    el.style.transform = el.classList.contains('side') ? (MOBILE?`translateY(${(1-o)*20}px)`:`translateY(calc(-50% + ${(1-o)*24}px))`) : `translateY(${(1-o)*18}px)`;
-    el.classList.toggle('on',o>.5);
-  });
-  progEls.forEach((e,i)=>e.classList.toggle('on',Math.round(seg)===i));
-  cue.style.opacity = (1-Math.min(1,p*14))*intro;
-  hdr.classList.toggle('scrolled',scrollY>40);
-}
-
-/* ---------------------------------------------------------------
-   STUDIO — interactive viewer
----------------------------------------------------------------- */
-const studioCanvas=document.getElementById('studioCanvas');
-const stR=makeRenderer(studioCanvas);
-let studio=null;
-if(stR){
-  const mats=makeMaterials();
-  const scene=new THREE.Scene(); const envs={gallery:makeEnv(stR,'gallery'),dusk:makeEnv(stR,'dusk')}; scene.environment=envs.gallery;
-  const cam=new THREE.PerspectiveCamera(32,1,.05,400);
-  const L=lights(scene); L.key.intensity=2.6; L.rim.intensity=.8; L.fill.intensity=.35; L.amb.intensity=.4;
-  const controls=new OrbitControls(cam,studioCanvas); controls.enableDamping=true; controls.dampingFactor=.06; controls.rotateSpeed=.55; controls.zoomSpeed=.7; controls.enablePan=false;
-  controls.autoRotate=!REDUCED; controls.autoRotateSpeed=.45;
-  // pendant
-  const pend=new THREE.Group(); const c1=buildCreation(mats,{bail:true}); const s1=c1.userData.scale; c1.scale.setScalar(s1); pend.add(c1);
-  const ch=buildChain(mats,new THREE.Vector3(0,c1.userData.bailTop-.12,0),26); ch.scale.setScalar(s1); pend.add(ch);
-  const sh1=new THREE.Mesh(new THREE.PlaneGeometry(7,7),new THREE.MeshBasicMaterial({map:shadowTexture(),transparent:true,depthWrite:false})); sh1.rotation.x=-Math.PI/2; sh1.position.y=-.005; pend.add(sh1);
-  scene.add(pend);
-  // grand — identical geometry, uniformly scaled 114/45
-  const GRAND=114/45;
-  const grand=new THREE.Group(); const c2=buildCreation(mats,{bail:false}); c2.scale.setScalar(c2.userData.scale*GRAND); grand.add(c2);
-  const disp=buildDisplay(mats); grand.add(disp); c2.position.y=.18;
-  scene.add(grand);
-  const pool=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshBasicMaterial({map:glowTexture('rgba(255,214,150,0.35)'),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})); pool.rotation.x=-Math.PI/2; pool.position.y=-2.75; scene.add(pool);
-  const H1=new THREE.Box3().setFromObject(c1).getSize(new THREE.Vector3()).y;
-  const H2=new THREE.Box3().setFromObject(c2).getSize(new THREE.Vector3()).y;
-  studio={scene,cam,controls,L,pend,grand,c1,c2,disp,envs,H1,H2,mode:'pendant',tween:null,visible:false,GRAND};
-}
-
-const MODES={
-  pendant:{title:'The Pendant', dims:[['45 mm','Width'],['47.16 mm','Height'],['≈ 50 g','18K gold · target']], flag:'Preliminary targets — certified on completion.',
-    details:[['Full view',{az:.35,el:.18,d:16,ty:2.4}],['The dome',{az:-.5,el:.7,d:6.5,ty:3.9}],['The arcade',{az:.4,el:.02,d:6,ty:1.9}],['Enamel drum',{az:.9,el:.3,d:5.4,ty:3.0}],['Sand chamber',{az:.2,el:-.08,d:5.8,ty:.65}],['The rear',{az:Math.PI,el:.15,d:13,ty:2.4}],['Bail & chain',{az:.3,el:.1,d:5.2,ty:5.4}]]},
-  grand:{title:'Grand Collector Edition', dims:[['114 mm','Width*'],['120 mm','Height*'],['×2.53','Same geometry']], flag:'*Per reference board. The brief also describes "two 1.5 L bottles" (~180 × 300 mm). Awaiting confirmation.',
-    details:[['Full view',{az:.35,el:.16,d:46,ty:4.5}],['Within the cloche',{az:-.3,el:.1,d:26,ty:6}],['The dome',{az:-.5,el:.6,d:15,ty:10.3}],['Sand chamber',{az:.25,el:-.04,d:15,ty:2}],['The plinth',{az:.0,el:.05,d:22,ty:-1.4}],['The rear',{az:Math.PI,el:.15,d:40,ty:5}]]},
-  compare:{title:'Side by side', dims:[['1 : 2.53','Scale'],['One','Geometry']], flag:'True relative scale. Cloche removed for clarity.',
-    details:[['Both creations',{az:.25,el:.12,d:52,ty:5}],['From above',{az:.25,el:.9,d:46,ty:3}],['The rear',{az:Math.PI+.25,el:.12,d:52,ty:5}]]},
-};
-const vinfo=document.getElementById('vinfo'), detailsEl=document.getElementById('details'), labP=document.getElementById('labP'), labG=document.getElementById('labG');
-function camFrom(v){ const {az,el,d,ty}=v; return {pos:new THREE.Vector3(Math.sin(az)*Math.cos(el)*d, ty+Math.sin(el)*d, Math.cos(az)*Math.cos(el)*d), tgt:new THREE.Vector3(0,ty,0)}; }
-function goTo(v,instant){ if(!studio) return; const f=MOBILE?(studio.mode==='compare'?2.1:1.35):1; const c=camFrom({...v,d:v.d*f});
-  if(instant||REDUCED){ studio.cam.position.copy(c.pos); studio.controls.target.copy(c.tgt); studio.tween=null; studio.controls.update(); return; }
-  studio.tween={p0:studio.cam.position.clone(),t0:studio.controls.target.clone(),p1:c.pos,t1:c.tgt,start:performance.now(),dur:1900}; }
-function setMode(mode,instant){
-  const md=MODES[mode];
-  document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));
-  vinfo.innerHTML=`<div class="eyebrow" style="margin-bottom:10px">${mode==='compare'?'Two sizes · one architecture':'Visual prototype'}</div><h3>${md.title}</h3><div class="dims">${md.dims.map(d=>`<span><b>${d[0]}</b>${d[1]}</span>`).join('')}</div><div class="flag">${md.flag}</div>`;
-  detailsEl.innerHTML=md.details.map((d,i)=>`<button data-i="${i}" class="${i===0?'on':''}">${d[0]}</button>`).join('');
-  detailsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{ detailsEl.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); studio&&(studio.controls.autoRotate=false); goTo(md.details[+b.dataset.i][1]); });
-  if(!studio) return;
-  studio.mode=mode;
-  const {pend,grand,disp,controls}=studio;
-  pend.visible=true; grand.visible=mode!=='pendant'; pend.visible=mode!=='grand';
-  disp.getObjectByName('cloche').visible = mode==='grand';
-  if(mode==='compare'){ pend.position.set(-7,-2.62,4); grand.position.set(6,0,0);} else { pend.position.set(0,0,0); grand.position.set(0,0,0); }
-  if(mode==='pendant'){ controls.minDistance=3.2; controls.maxDistance=26; } else { controls.minDistance=8; controls.maxDistance=90; }
-  controls.minPolarAngle=.15; controls.maxPolarAngle=Math.PI*.62;
-  labP.style.opacity=labG.style.opacity=mode==='compare'?1:0;
-  goTo(md.details[0][1],instant);
-}
-document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
-document.querySelectorAll('[data-light]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-light]').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(studio){ studio.scene.environment=studio.envs[b.dataset.light]; studio.L.key.color.set(b.dataset.light==='dusk'?0xffb070:0xffd6a0);} });
-setMode('pendant',true);
-if(studio){ const stopAuto=()=>{ studio.controls.autoRotate=false; document.getElementById('hint').style.opacity=0; }; studioCanvas.addEventListener('pointerdown',stopAuto); studioCanvas.addEventListener('wheel',stopAuto,{passive:true}); }
-
-/* ---------------------------------------------------------------
-   Loop
----------------------------------------------------------------- */
-function resize(r,cam,canvas){ const w=canvas.clientWidth,h=canvas.clientHeight; if(canvas.width!==Math.floor(w*r.getPixelRatio())||canvas.height!==Math.floor(h*r.getPixelRatio())){ r.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); } }
-const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.target===heroCanvas&&heroState) heroState.visible=e.isIntersecting; if(e.target===studioCanvas&&studio) studio.visible=e.isIntersecting; }),{rootMargin:'120px'});
-io.observe(heroCanvas); io.observe(studioCanvas);
-const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
-const v3=new THREE.Vector3();
-function frame(now){
-  requestAnimationFrame(frame);
-  const p=stageProgress();
-  const intro=REDUCED?1:Math.min(1,Math.max(0,(now-1400)/1600));
-  updateBeats(p,intro);
-  if(heroState&&heroState.visible){
-    const H=heroState, t=(now-H.t0)/1000;
-    resize(heroR,H.cam,heroCanvas);
-    // light reveal
-    const rv=REDUCED?1:ss(Math.min(1,t/3.6));
-    H.L.key.intensity=3.2*rv; H.L.rim.intensity=.9*rv; H.L.fill.intensity=.28*rv; H.L.amb.intensity=.35*rv; heroR.toneMappingExposure=.15+.9*rv;
-    H.beamMat.uniforms.uI.value=rv*(1-p*.4); H.dust.material.opacity=.55*rv;
-    // camera along beats
-    const seg=Math.min(3.999,p*4), i=Math.floor(seg), f=ss(seg-i), a=H.BEATS[i], b=H.BEATS[i+1];
-    const tgt={az:a.az+(b.az-a.az)*f, el:a.el+(b.el-a.el)*f, d:a.d+(b.d-a.d)*f, ty:a.ty+(b.ty-a.ty)*f};
-    const k=REDUCED?1:.06; for(const key in tgt) H.cur[key]+= (tgt[key]-H.cur[key])*k;
-    const narrow=H.cam.aspect<1? 1.0/Math.max(.55,H.cam.aspect)*.78 : 1;
-    const introPush = REDUCED?0:(1-rv)*3.5;
-    const c=camFrom({...H.cur,d:H.cur.d*narrow+introPush});
-    const sway=REDUCED?0:Math.sin(t*.25)*.06;
-    H.cam.position.copy(c.pos).add(v3.set(sway,Math.sin(t*.19)*.04,0)); H.cam.lookAt(c.tgt);
-    H.piece.rotation.y = p*Math.PI*1.15 + (REDUCED?0:t*.035);
-    const dp=H.dust.geometry.attributes.position; if(!REDUCED){ for(let j=0;j<dp.count;j++){ let y=dp.getY(j)+.0025; if(y>10) y=0; dp.setY(j,y); } dp.needsUpdate=true; }
-    heroR.render(H.scene,H.cam);
-  }
-  if(studio&&studio.visible){
-    const S=studio; resize(stR,S.cam,studioCanvas);
-    if(S.tween){ const q=Math.min(1,(now-S.tween.start)/S.tween.dur), e=ease(q); S.cam.position.lerpVectors(S.tween.p0,S.tween.p1,e); S.controls.target.lerpVectors(S.tween.t0,S.tween.t1,e); if(q>=1) S.tween=null; }
-    S.controls.update();
-    if(S.mode==='compare'){ // project labels under each object
-      const proj=(obj,y)=>{ const v=obj.position.clone(); v.y+=y; v.project(S.cam); return [(v.x*.5+.5)*studioCanvas.clientWidth,(-v.y*.5+.5)*studioCanvas.clientHeight]; };
-      const a=proj(S.pend,-.6), b=proj(S.grand,-5.4);
-      labP.style.left=a[0]+'px'; labP.style.top=a[1]+'px'; labG.style.left=b[0]+'px'; labG.style.top=b[1]+'px';
-    }
-    stR.render(S.scene,S.cam);
-  }
-}
-requestAnimationFrame(frame);
-
-/* reveal-on-scroll & form */
-const ro=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} }),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-const note=document.getElementById('formnote');
-document.getElementById('enq').addEventListener('submit',e=>{ e.preventDefault(); note.textContent='Prototype — this form is not yet connected. In the build, enquiries are encrypted and routed to the private concierge.'; });
-document.getElementById('viewingBtn').onclick=()=>{ note.textContent='Prototype — private viewing requests will open a confidential scheduling step in the build.'; };
-window.__ready=true;
+<script type="module" src="app.js"></script>
+<script>
+(function(){
+  const hdr=document.getElementById('hdr'); addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
+  const ro=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+  const note=document.getElementById('formnote');
+  document.getElementById('enq').addEventListener('submit',e=>{ e.preventDefault(); note.textContent='Prototype — this form is not yet connected. In the build, enquiries are encrypted and routed to the private concierge.'; });
+  document.getElementById('viewingBtn').onclick=()=>{ note.textContent='Prototype — private viewing requests will open a confidential scheduling step in the build.'; };
+})();
 </script>
 </body>
 </html>
